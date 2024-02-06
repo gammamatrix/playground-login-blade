@@ -1,0 +1,72 @@
+{
+    "name": "gammamatrix/playground-login-blade",
+    "description": "Playground: Provides Blade UI for authentication handling.",
+    "keywords": [
+        "blade",
+        "gammamatrix",
+        "laravel",
+        "login",
+        "auth",
+        "playground-login",
+        "playground-blade"
+    ],
+    "homepage": "https://github.com/gammamatrix/playground-login-blade/wiki",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jeremy Postlethwaite",
+            "email": "jeremy.postlethwaite@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/gammamatrix/playground-blade"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "gammamatrix/playground": "dev-feature/GH-9",
+        "gammamatrix/playground-blade": "dev-feature/GH-3"
+    },
+    "require-dev": {
+        "gammamatrix/playground-test": "dev-develop|dev-master|^73.0",
+        "tomasvotruba/bladestan": "^0.4.1"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "autoload": {
+        "psr-4": {
+            "Playground\\Login\\Blade\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\Feature\\Playground\\Login\\Blade\\": "tests/Feature/"
+        }
+    },
+    "config": {
+        "sort-packages": true,
+        "preferred-install": {
+            "gammamatrix/*": "source",
+            "*": "dist"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-develop": "73.x-dev",
+            "dev-master": "73.x-dev"
+        },
+        "laravel": {
+            "providers": [
+                "Playground\\Login\\Blade\\ServiceProvider"
+            ]
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "format": "vendor/bin/php-cs-fixer fix",
+        "analyse": "vendor/bin/phpstan analyse --verbose --debug --level max"
+    }
+}
