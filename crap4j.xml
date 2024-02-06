@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<crap_result>
+  <project/>
+  <timestamp>2024-02-06 02:42:14</timestamp>
+  <stats>
+    <name>Method Crap Stats</name>
+    <methodCount>37</methodCount>
+    <crapMethodCount>1</crapMethodCount>
+    <crapLoad>29</crapLoad>
+    <totalCrap>924.65</totalCrap>
+    <crapMethodPercent>2.7</crapMethodPercent>
+  </stats>
+  <methods>
+    <method>
+      <package>Playground\Login\Blade\Http\Controllers</package>
+      <className>Playground\Login\Blade\Http\Controllers\AuthenticatedSessionController</className>
+      <methodName>create</methodName>
+      <methodSignature>create(): Illuminate\View\View</methodSignature>
+      <fullMethod>create(): Illuminate\View\View</fullMethod>
+      <crap>1</crap>
+      <complexity>1</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Login\Blade\Http\Controllers</package>
+      <className>Playground\Login\Blade\Http\Controllers\AuthenticatedSessionController</className>
+      <methodName>privileges</methodName>
+      <methodSignature>privileges(Illuminate\Foundation\Auth\User $user): array</methodSignature>
+      <fullMethod>privileges(Illuminate\Foundation\Auth\User $user): array</fullMethod>
+      <crap>812</crap>
+      <complexity>28</complexity>
+      <coverage>0</coverage>
+      <crapLoad>29</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Login\Blade\Http\Controllers</package>
+      <className>Playground\Login\Blade\Http\Controllers\AuthenticatedSessionController</className>
+      <methodName>issue</methodName>
+      <methodSignature>issue(Illuminate\Foundation\Auth\User $user): array</methodSignature>
+      <fullMethod>issue(Illuminate\Foundation\Auth\User $user): array</fullMethod>
+      <crap>2</crap>
+      <complexity>1</complexity>
+      <coverage>0</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Login\Blade\Http\Controllers</package>
+      <className>Playground\Login\Blade\Http\Controllers\AuthenticatedSessionController</className>
+      <methodName>store</methodName>
+      <methodSignature>store(Playground\Login\Blade\Http\Requests\LoginRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</methodSignature>
+      <fullMethod>store(Playground\Login\Blade\Http\Requests\LoginRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</fullMethod>
+      <crap>5.47</crap>
+      <complexity>5</complexity>
+      <coverage>73.33</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Login\Blade\Http\Controllers</package>
+      <className>Playground\Login\Blade\Http\Controllers\AuthenticatedSessionController</className>
+      <methodName>destroy</methodName>
+      <methodSignature>destroy(Illuminate\Http\Request $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</methodSignature>
+      <fullMethod>destroy(Illuminate\Http\Request $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</fullMethod>
+      <crap>18.18</crap>
+      <complexity>7</complexity>
+      <coverage>38.89</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Login\Blade\Http\Controllers</package>
+      <className>Playground\Login\Blade\Http\Controllers\AuthenticatedSessionController</className>
+      <methodName>token</methodName>
+      <methodSignature>token(Illuminate\Http\Request $request): Illuminate\Http\JsonResponse</methodSignature>
+      <fullMethod>token(Illuminate\Http\Request $request): Illuminate\Http\JsonResponse</fullMethod>
+      <crap>1</crap>
+      <complexity>1</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Login\Blade\Http\Controllers</package>
+      <className>Playground\Login\Blade\Http\Controllers\ConfirmablePasswordController</className>
+      <methodName>show</methodName>
+      <methodSignature>show(): Illuminate\View\View</methodSignature>
+      <fullMethod>show(): Illuminate\View\View</fullMethod>
+      <crap>1</crap>
+      <complexity>1</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Login\Blade\Http\Controllers</package>
+      <className>Playground\Login\Blade\Http\Controllers\ConfirmablePasswordController</className>
+      <methodName>store</methodName>
+      <methodSignature>store(Illuminate\Http\Request $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</methodSignature>
+      <fullMethod>store(Illuminate\Http\Request $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</fullMethod>
+      <crap>2</crap>
+      <complexity>2</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Login\Blade\Http\Controllers</package>
+      <className>Playground\Login\Blade\Http\Controllers\Controller</className>
+      <methodName>getRedirectUrl</methodName>
+      <methodSignature>getRedirectUrl(): string</methodSignature>
+      <fullMethod>getRedirectUrl(): string</fullMethod>
+      <crap>2</crap>
+      <complexity>2</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Login\Blade\Http\Controllers</package>
+      <className>Playground\Login\Blade\Http\Controllers\Controller</className>
+      <methodName>getPackageViewPathFromConfig</methodName>
+      <methodSignature>getPackageViewPathFromConfig(mixed $config, string $view): string</methodSignature>
+      <fullMethod>getPackageViewPathFromConfig(mixed $config, string $view): string</fullMethod>
+      <crap>5</crap>
+      <complexity>5</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Login\Blade\Http\Controllers</package>
+      <className>Playground\Login\Blade\Http\Controllers\EmailVerificationController</className>
+      <methodName>show</methodName>
+      <methodSignature>show(Illuminate\Http\Request $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Illuminate\View\View</methodSignature>
+      <fullMethod>show(Illuminate\Http\Request $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Illuminate\View\View</fullMethod>
+      <crap>2</crap>
+      <complexity>2</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Login\Blade\Http\Controllers</package>
+      <className>Playground\Login\Blade\Http\Controllers\EmailVerificationController</className>
+      <methodName>send</methodName>
+      <methodSignature>send(Illuminate\Http\Request $request): \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response</methodSignature>
+      <fullMethod>send(Illuminate\Http\Request $request): \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response</fullMethod>
+      <crap>2</crap>
+      <complexity>2</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Login\Blade\Http\Controllers</package>
+      <className>Playground\Login\Blade\Http\Controllers\EmailVerificationController</className>
+      <methodName>verify</methodName>
+      <methodSignature>verify(Playground\Login\Blade\Http\Requests\EmailVerificationRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Illuminate\View\View</methodSignature>
+      <fullMethod>verify(Playground\Login\Blade\Http\Requests\EmailVerificationRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Illuminate\View\View</fullMethod>
+      <crap>3</crap>
+      <complexity>3</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Login\Blade\Http\Controllers</package>
+      <className>Playground\Login\Blade\Http\Controllers\NewPasswordController</className>
+      <methodName>create</methodName>
+      <methodSignature>create(Playground\Login\Blade\Http\Requests\NewPasswordRequest $request)</methodSignature>
+      <fullMethod>create(Playground\Login\Blade\Http\Requests\NewPasswordRequest $request)</fullMethod>
+      <crap>1</crap>
+      <complexity>1</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Login\Blade\Http\Controllers</package>
+      <className>Playground\Login\Blade\Http\Controllers\NewPasswordController</className>
+      <methodName>store</methodName>
+      <methodSignature>store(Playground\Login\Blade\Http\Requests\StoreNewPasswordRequest $request): Illuminate\Http\RedirectResponse</methodSignature>
+      <fullMethod>store(Playground\Login\Blade\Http\Requests\StoreNewPasswordRequest $request): Illuminate\Http\RedirectResponse</fullMethod>
+      <crap>4</crap>
+      <complexity>4</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Login\Blade\Http\Controllers</package>
+      <className>Playground\Login\Blade\Http\Controllers\PasswordResetLinkController</className>
+      <methodName>create</methodName>
+      <methodSignature>create(): Illuminate\View\View</methodSignature>
+      <fullMethod>create(): Illuminate\View\View</fullMethod>
+      <crap>1</crap>
+      <complexity>1</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Login\Blade\Http\Controllers</package>
+      <className>Playground\Login\Blade\Http\Controllers\PasswordResetLinkController</className>
+      <methodName>store</methodName>
+      <methodSignature>store(Playground\Login\Blade\Http\Requests\PasswordResetLinkRequest $request): Illuminate\Http\RedirectResponse</methodSignature>
+      <fullMethod>store(Playground\Login\Blade\Http\Requests\PasswordResetLinkRequest $request): Illuminate\Http\RedirectResponse</fullMethod>
+      <crap>2</crap>
+      <complexity>2</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Login\Blade\Http\Controllers</package>
+      <className>Playground\Login\Blade\Http\Controllers\RegisteredUserController</className>
+      <methodName>create</methodName>
+      <methodSignature>create()</methodSignature>
+      <fullMethod>create()</fullMethod>
+      <crap>1</crap>
+      <complexity>1</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Login\Blade\Http\Controllers</package>
+      <className>Playground\Login\Blade\Http\Controllers\RegisteredUserController</className>
+      <methodName>store</methodName>
+      <methodSignature>store(Playground\Login\Blade\Http\Requests\RegisterUserRequest $request)</methodSignature>
+      <fullMethod>store(Playground\Login\Blade\Http\Requests\RegisterUserRequest $request)</fullMethod>
+      <crap>2</crap>
+      <complexity>2</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Login\Blade\Http\Requests</package>
+      <className>Playground\Login\Blade\Http\Requests\EmailVerificationRequest</className>
+      <methodName>authorize</methodName>
+      <methodSignature>authorize()</methodSignature>
+      <fullMethod>authorize()</fullMethod>
+      <crap>13</crap>
+      <complexity>13</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Login\Blade\Http\Requests</package>
+      <className>Playground\Login\Blade\Http\Requests\LoginRequest</className>
+      <methodName>authorize</methodName>
+      <methodSignature>authorize(): bool</methodSignature>
+      <fullMethod>authorize(): bool</fullMethod>
+      <crap>1</crap>
+      <complexity>1</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Login\Blade\Http\Requests</package>
+      <className>Playground\Login\Blade\Http\Requests\LoginRequest</className>
+      <methodName>rules</methodName>
+      <methodSignature>rules(): array</methodSignature>
+      <fullMethod>rules(): array</fullMethod>
+      <crap>1</crap>
+      <complexity>1</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Login\Blade\Http\Requests</package>
+      <className>Playground\Login\Blade\Http\Requests\LoginRequest</className>
+      <methodName>authenticate</methodName>
+      <methodSignature>authenticate(): void</methodSignature>
+      <fullMethod>authenticate(): void</fullMethod>
+      <crap>2</crap>
+      <complexity>2</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Login\Blade\Http\Requests</package>
+      <className>Playground\Login\Blade\Http\Requests\LoginRequest</className>
+      <methodName>ensureIsNotRateLimited</methodName>
+      <methodSignature>ensureIsNotRateLimited(): void</methodSignature>
+      <fullMethod>ensureIsNotRateLimited(): void</fullMethod>
+      <crap>2</crap>
+      <complexity>2</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Login\Blade\Http\Requests</package>
+      <className>Playground\Login\Blade\Http\Requests\LoginRequest</className>
+      <methodName>throttleKey</methodName>
+      <methodSignature>throttleKey(): string</methodSignature>
+      <fullMethod>throttleKey(): string</fullMethod>
+      <crap>2</crap>
+      <complexity>2</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Login\Blade\Http\Requests</package>
+      <className>Playground\Login\Blade\Http\Requests\NewPasswordRequest</className>
+      <methodName>authorize</methodName>
+      <methodSignature>authorize(): bool</methodSignature>
+      <fullMethod>authorize(): bool</fullMethod>
+      <crap>1</crap>
+      <complexity>1</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Login\Blade\Http\Requests</package>
+      <className>Playground\Login\Blade\Http\Requests\PasswordResetLinkRequest</className>
+      <methodName>authorize</methodName>
+      <methodSignature>authorize(): bool</methodSignature>
+      <fullMethod>authorize(): bool</fullMethod>
+      <crap>1</crap>
+      <complexity>1</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Login\Blade\Http\Requests</package>
+      <className>Playground\Login\Blade\Http\Requests\PasswordResetLinkRequest</className>
+      <methodName>rules</methodName>
+      <methodSignature>rules(): array</methodSignature>
+      <fullMethod>rules(): array</fullMethod>
+      <crap>1</crap>
+      <complexity>1</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Login\Blade\Http\Requests</package>
+      <className>Playground\Login\Blade\Http\Requests\RegisterUserRequest</className>
+      <methodName>authorize</methodName>
+      <methodSignature>authorize(): bool</methodSignature>
+      <fullMethod>authorize(): bool</fullMethod>
+      <crap>1</crap>
+      <complexity>1</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Login\Blade\Http\Requests</package>
+      <className>Playground\Login\Blade\Http\Requests\RegisterUserRequest</className>
+      <methodName>rules</methodName>
+      <methodSignature>rules(): array</methodSignature>
+      <fullMethod>rules(): array</fullMethod>
+      <crap>1</crap>
+      <complexity>1</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Login\Blade\Http\Requests</package>
+      <className>Playground\Login\Blade\Http\Requests\StoreNewPasswordRequest</className>
+      <methodName>authorize</methodName>
+      <methodSignature>authorize(): bool</methodSignature>
+      <fullMethod>authorize(): bool</fullMethod>
+      <crap>1</crap>
+      <complexity>1</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Login\Blade\Http\Requests</package>
+      <className>Playground\Login\Blade\Http\Requests\StoreNewPasswordRequest</className>
+      <methodName>rules</methodName>
+      <methodSignature>rules(): array</methodSignature>
+      <fullMethod>rules(): array</fullMethod>
+      <crap>1</crap>
+      <complexity>1</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Login\Blade</package>
+      <className>Playground\Login\Blade\ServiceProvider</className>
+      <methodName>boot</methodName>
+      <methodSignature>boot(): void</methodSignature>
+      <fullMethod>boot(): void</fullMethod>
+      <crap>7</crap>
+      <complexity>7</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Login\Blade</package>
+      <className>Playground\Login\Blade\ServiceProvider</className>
+      <methodName>about</methodName>
+      <methodSignature>about(): void</methodSignature>
+      <fullMethod>about(): void</fullMethod>
+      <crap>11</crap>
+      <complexity>11</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Login\Blade</package>
+      <className>Playground\Login\Blade\ServiceProvider</className>
+      <methodName>register</methodName>
+      <methodSignature>register(): void</methodSignature>
+      <fullMethod>register(): void</fullMethod>
+      <crap>1</crap>
+      <complexity>1</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Login\Blade</package>
+      <className>Playground\Login\Blade\ServiceProvider</className>
+      <methodName>routes</methodName>
+      <methodSignature>routes(array $routes): void</methodSignature>
+      <fullMethod>routes(array $routes): void</fullMethod>
+      <crap>9</crap>
+      <complexity>9</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Login\Blade</package>
+      <className>Playground\Login\Blade\ServiceProvider</className>
+      <methodName>version</methodName>
+      <methodSignature>version(): string</methodSignature>
+      <fullMethod>version(): string</fullMethod>
+      <crap>1</crap>
+      <complexity>1</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+  </methods>
+</crap_result>
