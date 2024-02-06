@@ -1,44 +1,49 @@
-# Playground Blade
+# Playground Login Blade
 
-[![Playground CI Workflow](https://github.com/gammamatrix/playground-blade/actions/workflows/ci.yml/badge.svg?branch=develop)](https://raw.githubusercontent.com/gammamatrix/playground-blade/testing/develop/testdox.txt)
+[![Playground CI Workflow](https://github.com/gammamatrix/playground-login-blade/actions/workflows/ci.yml/badge.svg?branch=develop)](https://raw.githubusercontent.com/gammamatrix/playground-login-blade/testing/develop/testdox.txt)
 [![Test Coverage](https://raw.githubusercontent.com/gammamatrix/playground-login-blade/testing/develop/coverage.svg)](tests)
-[![PHPStan Level 9 src and tests](https://img.shields.io/badge/PHPStan-level%209-brightgreen)](.github/workflows/ci.yml#L115)
+[![PHPStan Level 9 src and tests](https://img.shields.io/badge/PHPStan-level%209-brightgreen)](.github/workflows/ci.yml#L120)
 
-The Playground Blade package for [Laravel](https://laravel.com/docs/10.x) applications.
+The Playground Login Blade package for [Laravel](https://laravel.com/docs/10.x) applications.
 
-This package provides Blade UI handling.
+This package provides Authentication Controllers and Blade UI handling:
+- Email Address Verification
+- Password Management
+- Authentication Supporting Roles, Privileges or Sanctum
+- User Registration
 
-More information is available [on the Playground Blade wiki.](https://github.com/gammamatrix/playground-blade/wiki)
+More information is available [on the Playground Login Blade wiki.](https://github.com/gammamatrix/playground-login-blade/wiki)
 
 ## Installation
 
 You can install the package via composer:
 
 ```bash
-composer require gammamatrix/playground-blade
+composer require gammamatrix/playground-login-blade
 ```
 
 ## Configuration
 
 You can publish the config file with:
 ```bash
-php artisan vendor:publish --provider="Playground\Blade\ServiceProvider" --tag="playground-config"
+php artisan vendor:publish --provider="Playground\Login\Blade\ServiceProvider" --tag="playground-config"
 ```
 
-See the contents of the published config file: [config/playground-blade.php](config/playground-blade.php)
+See the contents of the published config file: [config/playground-login-blade.php](config/playground-login-blade.php)
 
 You can publish the views file with:
 ```bash
-php artisan vendor:publish --provider="Playground\Blade\ServiceProvider" --tag="playground-view"
+php artisan vendor:publish --provider="Playground\Login\Blade\ServiceProvider" --tag="playground-view"
 ```
 
 ### Environment Variables
 
 #### Loading
 
-| env()                         | config()                      |
-|-------------------------------|-------------------------------|
-| `PLAYGROUND_BLADE_LOAD_VIEWS` | `playground-blade.load.views` |
+| env()                                | config()                             |
+|--------------------------------------|--------------------------------------|
+| `PLAYGROUND_LOGIN_BLADE_LOAD_VIEWS`  | `playground-login-blade.load.views`  |
+| `PLAYGROUND_LOGIN_BLADE_LOAD_ROUTES` | `playground-login-blade.load.routes` |
 
 
 ## Testing
