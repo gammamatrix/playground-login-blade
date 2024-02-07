@@ -10,7 +10,7 @@
 use Illuminate\Support\Facades\Route;
 
 Route::group([
-    'middleware' => config('playground-login-blade.middleware_guest'),
+    'middleware' => config('playground-login-blade.middleware.guest'),
     'namespace' => '\Playground\Login\Blade\Http\Controllers',
 ], function () {
     Route::get('/forgot-password', [

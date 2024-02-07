@@ -10,7 +10,7 @@
 use Illuminate\Support\Facades\Route;
 
 Route::group([
-    'middleware' => config('playground-login-blade.middleware_auth'),
+    'middleware' => config('playground-login-blade.middleware.auth'),
     'namespace' => '\Playground\Login\Blade\Http\Controllers',
 ], function () {
     Route::get('/confirm-password', [

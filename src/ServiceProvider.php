@@ -60,6 +60,10 @@ class ServiceProvider extends AuthServiceProvider
 
         $load = ! empty($config['load']) && is_array($config['load']) ? $config['load'] : [];
 
+        $middleware = ! empty($config['middleware']) && is_array($config['middleware']) ? $config['middleware'] : [];
+
+        $routes = ! empty($config['routes']) && is_array($config['routes']) ? $config['routes'] : [];
+
         $sitemap = ! empty($config['sitemap']) && is_array($config['sitemap']) ? $config['sitemap'] : [];
 
         $version = $this->version();
@@ -68,6 +72,10 @@ class ServiceProvider extends AuthServiceProvider
             '<fg=yellow;options=bold>Load</> Routes' => ! empty($load['routes']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',
             '<fg=yellow;options=bold>Load</> Views' => ! empty($load['views']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',
 
+            '<fg=yellow;options=bold>Middleware</> [auth]' => sprintf('[%s]', json_encode($middleware['auth'])),
+            '<fg=yellow;options=bold>Middleware</> [default]' => sprintf('[%s]', json_encode($middleware['default'])),
+            '<fg=yellow;options=bold>Middleware</> [guest]' => sprintf('[%s]', json_encode($middleware['guest'])),
+
             '<fg=blue;options=bold>View</> [layout]' => sprintf('[%s]', $config['layout']),
             '<fg=blue;options=bold>View</> [prefix]' => sprintf('[%s]', $config['view']),
 
@@ -75,6 +83,15 @@ class ServiceProvider extends AuthServiceProvider
             '<fg=magenta;options=bold>Sitemap</> Guest' => ! empty($sitemap['guest']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',
             '<fg=magenta;options=bold>Sitemap</> User' => ! empty($sitemap['user']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',
             '<fg=magenta;options=bold>Sitemap</> [view]' => sprintf('[%s]', $sitemap['view']),
+
+            '<fg=red;options=bold>Route</> confirm' => ! empty($routes['confirm']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',
+            '<fg=red;options=bold>Route</> forgot' => ! empty($routes['forgot']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',
+            '<fg=red;options=bold>Route</> login' => ! empty($routes['login']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',
+            '<fg=red;options=bold>Route</> logout' => ! empty($routes['logout']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',
+            '<fg=red;options=bold>Route</> register' => ! empty($routes['home']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',
+            '<fg=red;options=bold>Route</> reset' => ! empty($routes['reset']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',
+            '<fg=red;options=bold>Route</> token' => ! empty($routes['token']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',
+            '<fg=red;options=bold>Route</> verify' => ! empty($routes['verify']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',
 
             'Package' => $this->package,
             'Version' => $version,
@@ -100,11 +117,11 @@ class ServiceProvider extends AuthServiceProvider
         if (! empty($routes['forgot'])) {
             $this->loadRoutesFrom(dirname(__DIR__).'/routes/forgot.php');
         }
-        if (! empty($routes['logout'])) {
-            $this->loadRoutesFrom(dirname(__DIR__).'/routes/logout.php');
-        }
         if (! empty($routes['login'])) {
             $this->loadRoutesFrom(dirname(__DIR__).'/routes/login.php');
+        }
+        if (! empty($routes['logout'])) {
+            $this->loadRoutesFrom(dirname(__DIR__).'/routes/logout.php');
         }
         if (! empty($routes['register'])) {
             $this->loadRoutesFrom(dirname(__DIR__).'/routes/register.php');
