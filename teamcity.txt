@@ -7,7 +7,7 @@
 
 ##teamcity[testStarted name='test_command_about_displays_package_information_and_succeed_with_code_0' locationHint='php_qn:///app/tests/Feature/Console/Commands/About/CommandTest.php::\Tests\Feature\Playground\Login\Blade\Console\Commands\About\CommandTest::test_command_about_displays_package_information_and_succeed_with_code_0' flowId='1']
 
-##teamcity[testFinished name='test_command_about_displays_package_information_and_succeed_with_code_0' duration='274' flowId='1']
+##teamcity[testFinished name='test_command_about_displays_package_information_and_succeed_with_code_0' duration='280' flowId='1']
 
 ##teamcity[testSuiteFinished name='Tests\Feature\Playground\Login\Blade\Console\Commands\About\CommandTest' flowId='1']
 
@@ -15,35 +15,35 @@
 
 ##teamcity[testStarted name='test_login_screen_can_be_rendered' locationHint='php_qn:///app/tests/Feature/Http/Controllers/AuthenticationRouteTest.php::\Tests\Feature\Playground\Login\Blade\Http\Controllers\AuthenticationRouteTest::test_login_screen_can_be_rendered' flowId='1']
 
-##teamcity[testFinished name='test_login_screen_can_be_rendered' duration='120' flowId='1']
+##teamcity[testFinished name='test_login_screen_can_be_rendered' duration='122' flowId='1']
 
 ##teamcity[testStarted name='test_users_can_authenticate_using_the_login_screen' locationHint='php_qn:///app/tests/Feature/Http/Controllers/AuthenticationRouteTest.php::\Tests\Feature\Playground\Login\Blade\Http\Controllers\AuthenticationRouteTest::test_users_can_authenticate_using_the_login_screen' flowId='1']
 
-##teamcity[testFinished name='test_users_can_authenticate_using_the_login_screen' duration='61' flowId='1']
+##teamcity[testFinished name='test_users_can_authenticate_using_the_login_screen' duration='63' flowId='1']
 
 ##teamcity[testStarted name='test_users_cannot_authenticate_with_invalid_password' locationHint='php_qn:///app/tests/Feature/Http/Controllers/AuthenticationRouteTest.php::\Tests\Feature\Playground\Login\Blade\Http\Controllers\AuthenticationRouteTest::test_users_cannot_authenticate_with_invalid_password' flowId='1']
 
-##teamcity[testFinished name='test_users_cannot_authenticate_with_invalid_password' duration='233' flowId='1']
+##teamcity[testFinished name='test_users_cannot_authenticate_with_invalid_password' duration='235' flowId='1']
 
 ##teamcity[testStarted name='test_users_can_logout_on_get_request' locationHint='php_qn:///app/tests/Feature/Http/Controllers/AuthenticationRouteTest.php::\Tests\Feature\Playground\Login\Blade\Http\Controllers\AuthenticationRouteTest::test_users_can_logout_on_get_request' flowId='1']
 
-##teamcity[testFinished name='test_users_can_logout_on_get_request' duration='27' flowId='1']
+##teamcity[testFinished name='test_users_can_logout_on_get_request' duration='28' flowId='1']
 
 ##teamcity[testStarted name='test_users_can_logout_on_post_request' locationHint='php_qn:///app/tests/Feature/Http/Controllers/AuthenticationRouteTest.php::\Tests\Feature\Playground\Login\Blade\Http\Controllers\AuthenticationRouteTest::test_users_can_logout_on_post_request' flowId='1']
 
-##teamcity[testFinished name='test_users_can_logout_on_post_request' duration='26' flowId='1']
+##teamcity[testFinished name='test_users_can_logout_on_post_request' duration='28' flowId='1']
 
 ##teamcity[testStarted name='test_guests_can_logout_on_get_request' locationHint='php_qn:///app/tests/Feature/Http/Controllers/AuthenticationRouteTest.php::\Tests\Feature\Playground\Login\Blade\Http\Controllers\AuthenticationRouteTest::test_guests_can_logout_on_get_request' flowId='1']
 
-##teamcity[testFinished name='test_guests_can_logout_on_get_request' duration='22' flowId='1']
+##teamcity[testFinished name='test_guests_can_logout_on_get_request' duration='23' flowId='1']
 
 ##teamcity[testStarted name='test_csfr_token_request' locationHint='php_qn:///app/tests/Feature/Http/Controllers/AuthenticationRouteTest.php::\Tests\Feature\Playground\Login\Blade\Http\Controllers\AuthenticationRouteTest::test_csfr_token_request' flowId='1']
 
-##teamcity[testFinished name='test_csfr_token_request' duration='23' flowId='1']
+##teamcity[testFinished name='test_csfr_token_request' duration='25' flowId='1']
 
 ##teamcity[testStarted name='test_login_repeat_under_rate_limit_and_clear' locationHint='php_qn:///app/tests/Feature/Http/Controllers/AuthenticationRouteTest.php::\Tests\Feature\Playground\Login\Blade\Http\Controllers\AuthenticationRouteTest::test_login_repeat_under_rate_limit_and_clear' flowId='1']
 
-##teamcity[testFinished name='test_login_repeat_under_rate_limit_and_clear' duration='444' flowId='1']
+##teamcity[testFinished name='test_login_repeat_under_rate_limit_and_clear' duration='445' flowId='1']
 
 ##teamcity[testStarted name='test_login_repeat_and_hit_rate_limit' locationHint='php_qn:///app/tests/Feature/Http/Controllers/AuthenticationRouteTest.php::\Tests\Feature\Playground\Login\Blade\Http\Controllers\AuthenticationRouteTest::test_login_repeat_and_hit_rate_limit' flowId='1']
 
@@ -55,7 +55,7 @@
 
 ##teamcity[testStarted name='test_email_verification_screen_can_be_rendered' locationHint='php_qn:///app/tests/Feature/Http/Controllers/EmailVerificationRouteTest.php::\Tests\Feature\Playground\Login\Blade\Http\Controllers\EmailVerificationRouteTest::test_email_verification_screen_can_be_rendered' flowId='1']
 
-##teamcity[testFinished name='test_email_verification_screen_can_be_rendered' duration='44' flowId='1']
+##teamcity[testFinished name='test_email_verification_screen_can_be_rendered' duration='45' flowId='1']
 
 ##teamcity[testStarted name='test_email_verification_screen_is_not_rendered_if_already_verified' locationHint='php_qn:///app/tests/Feature/Http/Controllers/EmailVerificationRouteTest.php::\Tests\Feature\Playground\Login\Blade\Http\Controllers\EmailVerificationRouteTest::test_email_verification_screen_is_not_rendered_if_already_verified' flowId='1']
 
@@ -67,31 +67,31 @@
 
 ##teamcity[testStarted name='test_send_email_verification_notification_as_guest_and_redirect' locationHint='php_qn:///app/tests/Feature/Http/Controllers/EmailVerificationRouteTest.php::\Tests\Feature\Playground\Login\Blade\Http\Controllers\EmailVerificationRouteTest::test_send_email_verification_notification_as_guest_and_redirect' flowId='1']
 
-##teamcity[testFinished name='test_send_email_verification_notification_as_guest_and_redirect' duration='22' flowId='1']
+##teamcity[testFinished name='test_send_email_verification_notification_as_guest_and_redirect' duration='23' flowId='1']
 
 ##teamcity[testStarted name='test_send_email_verification_notification_as_user' locationHint='php_qn:///app/tests/Feature/Http/Controllers/EmailVerificationRouteTest.php::\Tests\Feature\Playground\Login\Blade\Http\Controllers\EmailVerificationRouteTest::test_send_email_verification_notification_as_user' flowId='1']
 
-##teamcity[testFinished name='test_send_email_verification_notification_as_user' duration='33' flowId='1']
+##teamcity[testFinished name='test_send_email_verification_notification_as_user' duration='34' flowId='1']
 
 ##teamcity[testStarted name='test_send_email_verification_notification_when_already_verified' locationHint='php_qn:///app/tests/Feature/Http/Controllers/EmailVerificationRouteTest.php::\Tests\Feature\Playground\Login\Blade\Http\Controllers\EmailVerificationRouteTest::test_send_email_verification_notification_when_already_verified' flowId='1']
 
-##teamcity[testFinished name='test_send_email_verification_notification_when_already_verified' duration='26' flowId='1']
+##teamcity[testFinished name='test_send_email_verification_notification_when_already_verified' duration='27' flowId='1']
 
 ##teamcity[testStarted name='test_email_can_be_verified' locationHint='php_qn:///app/tests/Feature/Http/Controllers/EmailVerificationRouteTest.php::\Tests\Feature\Playground\Login\Blade\Http\Controllers\EmailVerificationRouteTest::test_email_can_be_verified' flowId='1']
 
-##teamcity[testFinished name='test_email_can_be_verified' duration='37' flowId='1']
+##teamcity[testFinished name='test_email_can_be_verified' duration='41' flowId='1']
 
 ##teamcity[testStarted name='test_email_is_not_verified_with_invalid_hash' locationHint='php_qn:///app/tests/Feature/Http/Controllers/EmailVerificationRouteTest.php::\Tests\Feature\Playground\Login\Blade\Http\Controllers\EmailVerificationRouteTest::test_email_is_not_verified_with_invalid_hash' flowId='1']
 
-##teamcity[testFinished name='test_email_is_not_verified_with_invalid_hash' duration='31' flowId='1']
+##teamcity[testFinished name='test_email_is_not_verified_with_invalid_hash' duration='33' flowId='1']
 
 ##teamcity[testStarted name='test_email_is_not_verified_with_invalid_user_id' locationHint='php_qn:///app/tests/Feature/Http/Controllers/EmailVerificationRouteTest.php::\Tests\Feature\Playground\Login\Blade\Http\Controllers\EmailVerificationRouteTest::test_email_is_not_verified_with_invalid_user_id' flowId='1']
 
-##teamcity[testFinished name='test_email_is_not_verified_with_invalid_user_id' duration='29' flowId='1']
+##teamcity[testFinished name='test_email_is_not_verified_with_invalid_user_id' duration='30' flowId='1']
 
 ##teamcity[testStarted name='test_email_verified_with_already_verified' locationHint='php_qn:///app/tests/Feature/Http/Controllers/EmailVerificationRouteTest.php::\Tests\Feature\Playground\Login\Blade\Http\Controllers\EmailVerificationRouteTest::test_email_verified_with_already_verified' flowId='1']
 
-##teamcity[testFinished name='test_email_verified_with_already_verified' duration='29' flowId='1']
+##teamcity[testFinished name='test_email_verified_with_already_verified' duration='31' flowId='1']
 
 ##teamcity[testSuiteFinished name='Tests\Feature\Playground\Login\Blade\Http\Controllers\EmailVerificationRouteTest' flowId='1']
 
@@ -99,15 +99,15 @@
 
 ##teamcity[testStarted name='test_confirm_password_screen_can_be_rendered' locationHint='php_qn:///app/tests/Feature/Http/Controllers/PasswordConfirmationRouteTest.php::\Tests\Feature\Playground\Login\Blade\Http\Controllers\PasswordConfirmationRouteTest::test_confirm_password_screen_can_be_rendered' flowId='1']
 
-##teamcity[testFinished name='test_confirm_password_screen_can_be_rendered' duration='42' flowId='1']
+##teamcity[testFinished name='test_confirm_password_screen_can_be_rendered' duration='45' flowId='1']
 
 ##teamcity[testStarted name='test_password_can_be_confirmed' locationHint='php_qn:///app/tests/Feature/Http/Controllers/PasswordConfirmationRouteTest.php::\Tests\Feature\Playground\Login\Blade\Http\Controllers\PasswordConfirmationRouteTest::test_password_can_be_confirmed' flowId='1']
 
-##teamcity[testFinished name='test_password_can_be_confirmed' duration='27' flowId='1']
+##teamcity[testFinished name='test_password_can_be_confirmed' duration='28' flowId='1']
 
 ##teamcity[testStarted name='test_password_is_not_confirmed_with_invalid_password' locationHint='php_qn:///app/tests/Feature/Http/Controllers/PasswordConfirmationRouteTest.php::\Tests\Feature\Playground\Login\Blade\Http\Controllers\PasswordConfirmationRouteTest::test_password_is_not_confirmed_with_invalid_password' flowId='1']
 
-##teamcity[testFinished name='test_password_is_not_confirmed_with_invalid_password' duration='228' flowId='1']
+##teamcity[testFinished name='test_password_is_not_confirmed_with_invalid_password' duration='229' flowId='1']
 
 ##teamcity[testSuiteFinished name='Tests\Feature\Playground\Login\Blade\Http\Controllers\PasswordConfirmationRouteTest' flowId='1']
 
@@ -119,11 +119,11 @@
 
 ##teamcity[testStarted name='test_reset_password_link_can_be_requested' locationHint='php_qn:///app/tests/Feature/Http/Controllers/PasswordResetRouteTest.php::\Tests\Feature\Playground\Login\Blade\Http\Controllers\PasswordResetRouteTest::test_reset_password_link_can_be_requested' flowId='1']
 
-##teamcity[testFinished name='test_reset_password_link_can_be_requested' duration='33' flowId='1']
+##teamcity[testFinished name='test_reset_password_link_can_be_requested' duration='34' flowId='1']
 
 ##teamcity[testStarted name='test_reset_password_screen_can_be_rendered' locationHint='php_qn:///app/tests/Feature/Http/Controllers/PasswordResetRouteTest.php::\Tests\Feature\Playground\Login\Blade\Http\Controllers\PasswordResetRouteTest::test_reset_password_screen_can_be_rendered' flowId='1']
 
-##teamcity[testFinished name='test_reset_password_screen_can_be_rendered' duration='58' flowId='1']
+##teamcity[testFinished name='test_reset_password_screen_can_be_rendered' duration='60' flowId='1']
 
 ##teamcity[testStarted name='test_password_can_be_reset_with_valid_token' locationHint='php_qn:///app/tests/Feature/Http/Controllers/PasswordResetRouteTest.php::\Tests\Feature\Playground\Login\Blade\Http\Controllers\PasswordResetRouteTest::test_password_can_be_reset_with_valid_token' flowId='1']
 
@@ -131,11 +131,11 @@
 
 ##teamcity[testStarted name='test_password_reset_with_invalid_token' locationHint='php_qn:///app/tests/Feature/Http/Controllers/PasswordResetRouteTest.php::\Tests\Feature\Playground\Login\Blade\Http\Controllers\PasswordResetRouteTest::test_password_reset_with_invalid_token' flowId='1']
 
-##teamcity[testFinished name='test_password_reset_with_invalid_token' duration='38' flowId='1']
+##teamcity[testFinished name='test_password_reset_with_invalid_token' duration='39' flowId='1']
 
 ##teamcity[testStarted name='test_password_reset_with_invalid_user' locationHint='php_qn:///app/tests/Feature/Http/Controllers/PasswordResetRouteTest.php::\Tests\Feature\Playground\Login\Blade\Http\Controllers\PasswordResetRouteTest::test_password_reset_with_invalid_user' flowId='1']
 
-##teamcity[testFinished name='test_password_reset_with_invalid_user' duration='27' flowId='1']
+##teamcity[testFinished name='test_password_reset_with_invalid_user' duration='28' flowId='1']
 
 ##teamcity[testSuiteFinished name='Tests\Feature\Playground\Login\Blade\Http\Controllers\PasswordResetRouteTest' flowId='1']
 
@@ -147,7 +147,7 @@
 
 ##teamcity[testStarted name='test_new_users_can_register' locationHint='php_qn:///app/tests/Feature/Http/Controllers/RegistrationRouteTest.php::\Tests\Feature\Playground\Login\Blade\Http\Controllers\RegistrationRouteTest::test_new_users_can_register' flowId='1']
 
-##teamcity[testFinished name='test_new_users_can_register' duration='36' flowId='1']
+##teamcity[testFinished name='test_new_users_can_register' duration='35' flowId='1']
 
 ##teamcity[testSuiteFinished name='Tests\Feature\Playground\Login\Blade\Http\Controllers\RegistrationRouteTest' flowId='1']
 
