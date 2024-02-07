@@ -72,9 +72,9 @@ class ServiceProvider extends AuthServiceProvider
             '<fg=yellow;options=bold>Load</> Routes' => ! empty($load['routes']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',
             '<fg=yellow;options=bold>Load</> Views' => ! empty($load['views']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',
 
-            '<fg=yellow;options=bold>Middleware</> [auth]' => sprintf('[%s]', json_encode($middleware['auth'])),
-            '<fg=yellow;options=bold>Middleware</> [default]' => sprintf('[%s]', json_encode($middleware['default'])),
-            '<fg=yellow;options=bold>Middleware</> [guest]' => sprintf('[%s]', json_encode($middleware['guest'])),
+            '<fg=yellow;options=bold>Middleware</> auth' => sprintf('%s', json_encode($middleware['auth'])),
+            '<fg=yellow;options=bold>Middleware</> default' => sprintf('%s', json_encode($middleware['default'])),
+            '<fg=yellow;options=bold>Middleware</> guest' => sprintf('%s', json_encode($middleware['guest'])),
 
             '<fg=blue;options=bold>View</> [layout]' => sprintf('[%s]', $config['layout']),
             '<fg=blue;options=bold>View</> [prefix]' => sprintf('[%s]', $config['view']),

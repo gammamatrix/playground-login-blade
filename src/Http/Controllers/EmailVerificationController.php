@@ -33,14 +33,12 @@ class EmailVerificationController extends Controller
             return redirect()->intended($this->getRedirectUrl());
         }
 
-        $package_config = config('playground');
         $package_config_login_blade = config('playground-login-blade');
 
         return view($this->getPackageViewPathFromConfig(
             $package_config_login_blade,
             'verify-email'
         ), [
-            'package_config' => $package_config,
             'package_config_login_blade' => $package_config_login_blade,
         ]);
     }

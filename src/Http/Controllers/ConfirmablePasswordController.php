@@ -23,15 +23,12 @@ class ConfirmablePasswordController extends Controller
      */
     public function show(): View
     {
-        $package_config = config('playground');
-
         $package_config_login_blade = config('playground-login-blade');
 
         return view($this->getPackageViewPathFromConfig(
             $package_config_login_blade,
             'confirm-password'
         ), [
-            'package_config' => $package_config,
             'package_config_login_blade' => $package_config_login_blade,
         ]);
     }

@@ -36,6 +36,7 @@ phpunit.xml
 phpstan.neon
 testbench.yaml
 docs
+!resources/docs/artisan-about-playground-login-blade.png
 ################################################################################
 # Shared and mount ignores
 ################################################################################
