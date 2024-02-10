@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\View\View;
 use Laravel\Sanctum\Contracts\HasApiTokens;
 use Playground\Login\Blade\Http\Requests\LoginRequest;
+use Playground\Auth\Issuer;
 
 /**
  * \Playground\Login\Blade\Http\Controllers\AuthenticatedSessionController
@@ -182,6 +183,7 @@ class AuthenticatedSessionController extends Controller
             $user = $request->user();
             if ($user) {
                 $payload['tokens'] = $this->issue($user);
+                // $payload['tokens'] = app(Issuer::class)->sanctum($user);
             }
         }
 
