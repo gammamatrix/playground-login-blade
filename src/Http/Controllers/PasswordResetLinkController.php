@@ -17,6 +17,8 @@ class PasswordResetLinkController extends Controller
 {
     /**
      * Display the password reset link request view.
+     *
+     * @route GET /forgot-password password.request
      */
     public function create(): View
     {
@@ -33,6 +35,8 @@ class PasswordResetLinkController extends Controller
 
     /**
      * Handle an incoming password reset link request.
+     *
+     * @route POST /forgot-password password.email
      *
      * @throws ValidationException
      */

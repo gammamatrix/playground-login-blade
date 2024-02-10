@@ -36,7 +36,7 @@ class ConfirmablePasswordController extends Controller
     /**
      * Confirm the user's password.
      *
-     * @route POST /confirm-password
+     * @route POST /confirm-password password.confirmed
      */
     public function store(Request $request): JsonResponse|RedirectResponse
     {

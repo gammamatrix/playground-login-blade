@@ -10,8 +10,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;
-use Illuminate\Validation\Rules;
 use Illuminate\Validation\ValidationException;
+use Illuminate\View\View;
 use Playground\Login\Blade\Http\Requests\NewPasswordRequest;
 use Playground\Login\Blade\Http\Requests\StoreNewPasswordRequest;
 
@@ -24,10 +24,8 @@ class NewPasswordController extends Controller
      * Display the password reset view.
      *
      * @route GET /reset-password/{token} password.reset
-     *
-     * @return \Illuminate\View\View
      */
-    public function create(NewPasswordRequest $request)
+    public function create(NewPasswordRequest $request): View
     {
         /**
          * @var array<string, mixed> $validated
@@ -48,7 +46,7 @@ class NewPasswordController extends Controller
     /**
      * Handle an incoming new password request.
      *
-     * @route GET /reset-password/{token} password.reset
+     * @route POST /reset-password password.update
      *
      * @throws ValidationException
      */
@@ -60,12 +58,6 @@ class NewPasswordController extends Controller
         $validated = $request->validated();
 
         $password = ! empty($validated['password']) && is_string($validated['password']) ? $validated['password'] : '';
-
-        // $request->validate([
-        //     'token' => 'required',
-        //     'email' => 'required|email',
-        //     'password' => ['required', 'confirmed', Rules\Password::defaults()],
-        // ]);
 
         // Here we will attempt to reset the user's password. If it is successful we
         // will update the password on an actual user model and persist it to the

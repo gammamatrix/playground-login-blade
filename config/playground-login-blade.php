@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'layout' => env('PLAYGROUND_LOGIN_BLADE_LAYOUT', env('PLAYGROUND_LAYOUT', 'playground::layouts.site')),
+    'layout' => env('PLAYGROUND_LOGIN_BLADE_LAYOUT', env('PLAYGROUND_BLADE_LAYOUT', 'playground::layouts.site')),
     'load' => [
         'views' => (bool) env('PLAYGROUND_LOGIN_BLADE_LOAD_VIEWS', true),
         'routes' => (bool) env('PLAYGROUND_LOGIN_BLADE_LOAD_ROUTES', true),

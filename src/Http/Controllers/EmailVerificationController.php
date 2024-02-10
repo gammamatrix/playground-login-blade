@@ -67,7 +67,7 @@ class EmailVerificationController extends Controller
     /**
      * Mark the authenticated user's email address as verified.
      *
-     * @route POST /verify-email/{id}/{hash} verification.verify
+     * @route GET /verify-email/{id}/{hash} verification.verify
      */
     public function verify(
         EmailVerificationRequest $request
