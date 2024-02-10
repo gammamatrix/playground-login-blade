@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <crap_result>
   <project/>
-  <timestamp>2024-02-07 22:29:32</timestamp>
+  <timestamp>2024-02-10 04:55:26</timestamp>
   <stats>
     <name>Method Crap Stats</name>
     <methodCount>37</methodCount>
@@ -158,8 +158,8 @@
       <package>Playground\Login\Blade\Http\Controllers</package>
       <className>Playground\Login\Blade\Http\Controllers\NewPasswordController</className>
       <methodName>create</methodName>
-      <methodSignature>create(Playground\Login\Blade\Http\Requests\NewPasswordRequest $request)</methodSignature>
-      <fullMethod>create(Playground\Login\Blade\Http\Requests\NewPasswordRequest $request)</fullMethod>
+      <methodSignature>create(Playground\Login\Blade\Http\Requests\NewPasswordRequest $request): Illuminate\View\View</methodSignature>
+      <fullMethod>create(Playground\Login\Blade\Http\Requests\NewPasswordRequest $request): Illuminate\View\View</fullMethod>
       <crap>1</crap>
       <complexity>1</complexity>
       <coverage>100</coverage>
@@ -202,8 +202,8 @@
       <package>Playground\Login\Blade\Http\Controllers</package>
       <className>Playground\Login\Blade\Http\Controllers\RegisteredUserController</className>
       <methodName>create</methodName>
-      <methodSignature>create()</methodSignature>
-      <fullMethod>create()</fullMethod>
+      <methodSignature>create(): Illuminate\View\View</methodSignature>
+      <fullMethod>create(): Illuminate\View\View</fullMethod>
       <crap>1</crap>
       <complexity>1</complexity>
       <coverage>100</coverage>
@@ -213,8 +213,8 @@
       <package>Playground\Login\Blade\Http\Controllers</package>
       <className>Playground\Login\Blade\Http\Controllers\RegisteredUserController</className>
       <methodName>store</methodName>
-      <methodSignature>store(Playground\Login\Blade\Http\Requests\RegisterUserRequest $request)</methodSignature>
-      <fullMethod>store(Playground\Login\Blade\Http\Requests\RegisterUserRequest $request)</fullMethod>
+      <methodSignature>store(Playground\Login\Blade\Http\Requests\RegisterUserRequest $request): Illuminate\Http\RedirectResponse</methodSignature>
+      <fullMethod>store(Playground\Login\Blade\Http\Requests\RegisterUserRequest $request): Illuminate\Http\RedirectResponse</fullMethod>
       <crap>2</crap>
       <complexity>2</complexity>
       <coverage>100</coverage>
