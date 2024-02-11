@@ -6,6 +6,7 @@ namespace Tests\Feature\Playground\Login\Blade;
 
 use Illuminate\Foundation\Testing\Concerns\InteractsWithViews;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Playground\Auth\ServiceProvider as PlaygroundAuthServiceProvider;
 use Playground\Blade\ServiceProvider as PlaygroundBladeServiceProvider;
 use Playground\Login\Blade\ServiceProvider;
 use Playground\ServiceProvider as PlaygroundServiceProvider;
@@ -22,6 +23,7 @@ class TestCase extends OrchestraTestCase
     protected function getPackageProviders($app)
     {
         return [
+            PlaygroundAuthServiceProvider::class,
             PlaygroundServiceProvider::class,
             PlaygroundBladeServiceProvider::class,
             ServiceProvider::class,

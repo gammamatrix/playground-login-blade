@@ -4,7 +4,7 @@
  */
 namespace Playground\Login\Blade\Http\Controllers;
 
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\View\View;
 use Laravel\Sanctum\Contracts\HasApiTokens;
+use Laravel\Sanctum\PersonalAccessToken;
+use Playground\Auth\Issuer;
 use Playground\Login\Blade\Http\Requests\LoginRequest;
 
 /**
@@ -39,130 +41,9 @@ class AuthenticatedSessionController extends Controller
     }
 
     /**
-     * TODO This should work with any kind of authentication system. Identify what is supported.
-     *
-     * Types:
-     * - User::$priviliges
-     * - User::hasPrivilige()
-     * - User::$roles
-     * - User::hasRole() - with string or array?
-     * - User::hasRoles()
-     * - Auth::user()?->currentAccessToken()?->can('app:*')
-     * - Auth::user()?->currentAccessToken()?->can($withPrivilege.':create')
-     *
-     * @experimental Subject to change
-     *
-     * @return array<int, string>
-     */
-    protected function privileges(Authenticatable $user): array
-    {
-        $privileges = [];
-
-        $hasRoles = ! empty(config('playground-auth.token.roles'));
-
-        $isAdmin = $hasRoles && is_callable([$user, 'hasRole']) && $user->hasRole(['admin', 'wheel', 'root']);
-        $isManager = $hasRoles && is_callable([$user, 'hasRole']) && $user->hasRole(['amanager']);
-
-        $managers = config('playground-login-blade.managers');
-
-        /**
-         * @var string $email
-         */
-        $email = $user->getAttributeValue('email');
-
-        if (is_array($managers)) {
-            if ($email && in_array($email, $managers)) {
-                $isAdmin = false;
-                $isManager = true;
-            }
-        }
-
-        $admins = config('playground-auth.admins');
-        if (is_array($admins)) {
-            if ($email && in_array($email, $admins)) {
-                $isAdmin = true;
-                $isManager = false;
-            }
-        }
-
-        if ($isAdmin) {
-            $privileges_admin = config('playground-auth.privileges.admin');
-            if (is_array($privileges_admin)) {
-                foreach ($privileges_admin as $privilege) {
-                    if (is_string($privilege)
-                        && $privilege
-                        && ! in_array($privilege, $privileges)
-                    ) {
-                        $privileges[] = $privilege;
-                    }
-                }
-            }
-        } elseif ($isManager) {
-            $privileges_manager = config('playground-auth.privileges.manager');
-            if (is_array($privileges_manager)) {
-                foreach ($privileges_manager as $privilege) {
-                    if (is_string($privilege)
-                        && $privilege
-                        && ! in_array($privilege, $privileges)
-                    ) {
-                        $privileges[] = $privilege;
-                    }
-                }
-            }
-        } else {
-            $privileges_user = config('playground-auth.privileges.user');
-            if (is_array($privileges_user)) {
-                foreach ($privileges_user as $privilege) {
-                    if (is_string($privilege)
-                        && $privilege
-                        && ! in_array($privilege, $privileges)
-                    ) {
-                        $privileges[] = $privilege;
-                    }
-                }
-            }
-        }
-
-        return $privileges;
-    }
-
-    /**
-     * NOTE: Creates multiple keys. Not sure if it is ok to reuse a token?
-     * TODO: This needs the device_name handling for Sanctum
-     *
-     * @param Authenticatable&HasApiTokens $user
-     * @return array<string, string>
-     */
-    protected function issue(Authenticatable $user): array
-    {
-        $tokens = [];
-
-        /**
-         * @var string $name
-         */
-        $name = config('playground-auth.token.name');
-
-        $privileges = $this->privileges($user);
-
-        /**
-         * @var string $expire
-         */
-        $expire = config('playground-auth.token.expires');
-
-        // $token = PersonalAccessToken::findToken($hashedTooken);
-
-        $tokens[$name] = $user->createToken(
-            $name,
-            $privileges
-        )->plainTextToken;
-
-        return $tokens;
-    }
-
-    /**
      * Authenticated the user.
      *
-     * @route POST /login
+     * @route POST /login login.post
      */
     public function store(LoginRequest $request): JsonResponse|RedirectResponse
     {
@@ -175,17 +56,41 @@ class AuthenticatedSessionController extends Controller
             'tokens' => [],
         ];
 
-        if (! empty(config('playground-auth.token.sanctum'))) {
+        $useSession = ! empty(config('playground-login-blade.session'));
+
+        /**
+         * @var array<string, mixed> $config_token
+         */
+        $config_token = config('playground-auth.token');
+
+        $token_name = '';
+        if (! empty($config_token['name'])
+            && is_string($config_token['name'])
+        ) {
+            $token_name = $config_token['name'];
+        }
+
+        if (! empty($config_token['sanctum'])) {
             /**
              * @var Authenticatable&HasApiTokens $user
              */
             $user = $request->user();
             if ($user) {
-                $payload['tokens'] = $this->issue($user);
+                $payload['tokens'] = app(Issuer::class)->sanctum($user);
+
+                if ($useSession
+                    && ! empty($payload['tokens'][$token_name])
+                    && is_string($payload['tokens'][$token_name])
+                ) {
+                    $request->session()->put(
+                        'sanctum',
+                        $payload['tokens'][$token_name]
+                    );
+                }
             }
         }
 
-        if (! empty(config('playground-login-blade.session'))) {
+        if ($useSession) {
             $payload['tokens']['session'] = $request->session()->token();
         }
 
@@ -217,9 +122,18 @@ class AuthenticatedSessionController extends Controller
                     $user->tokens()->delete();
                 } else {
                     /**
-                     * @var \Laravel\Sanctum\PersonalAccessToken $token
+                     * @var PersonalAccessToken $token
                      */
                     $token = $user->currentAccessToken();
+
+                    $hash = $request->session()->get('sanctum');
+                    if (! $token && $hash && is_string($hash)) {
+                        /**
+                         * @var PersonalAccessToken $token
+                         */
+                        $token = PersonalAccessToken::findToken($hash);
+                    }
+
                     if ($token) {
                         $token->delete();
                     }
@@ -245,6 +159,8 @@ class AuthenticatedSessionController extends Controller
 
     /**
      * Return a CSRF token.
+     *
+     * @route GET /token token
      */
     public function token(Request $request): JsonResponse
     {

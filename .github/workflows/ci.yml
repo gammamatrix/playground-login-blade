@@ -101,7 +101,7 @@ jobs:
       with:
         version: "10.1"
         php_version: "8.2"
-        php_extensions: xdebug
+        php_extensions: intl xdebug
         coverage_clover: clover.xml
         coverage_text: true
     - name: Make code coverage badge

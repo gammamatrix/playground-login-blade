@@ -19,6 +19,7 @@ Route::group([
     ]);
 
     Route::post('/confirm-password', [
+        'as' => 'password.confirmed',
         'uses' => 'ConfirmablePasswordController@store',
     ]);
 });

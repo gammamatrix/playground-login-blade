@@ -5,10 +5,12 @@
 namespace Playground\Login\Blade\Http\Controllers;
 
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 // use Illuminate\Validation\Rules;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\View\View;
 use Playground\Login\Blade\Http\Requests\RegisterUserRequest;
 
 /**
@@ -19,9 +21,9 @@ class RegisteredUserController extends Controller
     /**
      * Display the registration view.
      *
-     * @return \Illuminate\View\View
+     * @route GET /register register
      */
-    public function create()
+    public function create(): View
     {
         $package_config_login_blade = config('playground-login-blade');
 
@@ -36,31 +38,24 @@ class RegisteredUserController extends Controller
     /**
      * Handle an incoming registration request.
      *
-     * @return \Illuminate\Http\RedirectResponse
-     *
-     * @throws \Illuminate\Validation\ValidationException
+     * @route POST /register register.post
      */
-    public function store(RegisterUserRequest $request)
+    public function store(RegisterUserRequest $request): RedirectResponse
     {
         /**
          * @var array<string, mixed> $validated
          */
         $validated = $request->validated();
-        // $request->validate([
-        //     'name' => 'required|string|max:255',
-        //     'email' => 'required|string|email|max:255|unique:users',
-        //     'password' => ['required', 'confirmed', Rules\Password::defaults()],
-        // ]);
 
         /**
-         * @var class-string<\Illuminate\Database\Eloquent\Model> $c
+         * @var class-string<\Illuminate\Database\Eloquent\Model> $u
          */
-        $c = config('auth.providers.users.model', '\\App\\Models\\User');
+        $u = config('auth.providers.users.model', '\\App\\Models\\User');
 
         /**
-         * @var \Illuminate\Contracts\Auth\Authenticatable
+         * @var \Illuminate\Contracts\Auth\Authenticatable $user
          */
-        $user = $c::create([
+        $user = $u::create([
             'name' => $validated['name'],
             'email' => $validated['email'],
             'password' => Hash::make(
