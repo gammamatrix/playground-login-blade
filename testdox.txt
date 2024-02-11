@@ -1,8 +1,10 @@
 Authentication Route (Tests\Feature\Playground\Login\Blade\Http\Controllers\AuthenticationRoute)
  [x] Login screen can be rendered
  [x] Users can authenticate using the login screen
+ [x] Users can authenticate using json
  [x] Users cannot authenticate with invalid password
  [x] Users can logout on get request
+ [x] Users can logout on get request using json
  [x] Users can logout on post request
  [x] Guests can logout on get request
  [x] Csfr token request
@@ -40,4 +42,10 @@ Password Reset Route (Tests\Feature\Playground\Login\Blade\Http\Controllers\Pass
 Registration Route (Tests\Feature\Playground\Login\Blade\Http\Controllers\RegistrationRoute)
  [x] Registration screen can be rendered
  [x] New users can register
+
+Sanctum Route (Tests\Feature\Playground\Login\Blade\Http\Controllers\SanctumRoute)
+ [x] Sanctum users can authenticate and logout and delete token
+ [x] Sanctum users can logout without token using json
+ [x] Sanctum users can logout all tokens without token using json
+ [x] Sanctum users can logout everywhere tokens without token
 

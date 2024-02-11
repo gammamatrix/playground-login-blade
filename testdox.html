@@ -55,8 +55,10 @@
         <ul>
             <li class="success">Login screen can be rendered</li>
             <li class="success">Users can authenticate using the login screen</li>
+            <li class="success">Users can authenticate using json</li>
             <li class="success">Users cannot authenticate with invalid password</li>
             <li class="success">Users can logout on get request</li>
+            <li class="success">Users can logout on get request using json</li>
             <li class="success">Users can logout on post request</li>
             <li class="success">Guests can logout on get request</li>
             <li class="success">Csfr token request</li>
@@ -99,6 +101,13 @@
         <ul>
             <li class="success">Registration screen can be rendered</li>
             <li class="success">New users can register</li>
+        </ul>
+        <h2>Sanctum Route (Tests\Feature\Playground\Login\Blade\Http\Controllers\SanctumRoute)</h2>
+        <ul>
+            <li class="success">Sanctum users can authenticate and logout and delete token</li>
+            <li class="success">Sanctum users can logout without token using json</li>
+            <li class="success">Sanctum users can logout all tokens without token using json</li>
+            <li class="success">Sanctum users can logout everywhere tokens without token</li>
         </ul>
     </body>
 </html>
