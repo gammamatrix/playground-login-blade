@@ -53,7 +53,7 @@ class RegisteredUserController extends Controller
         $u = config('auth.providers.users.model', '\\App\\Models\\User');
 
         /**
-         * @var \Illuminate\Contracts\Auth\Authenticatable
+         * @var \Illuminate\Contracts\Auth\Authenticatable $user
          */
         $user = $u::create([
             'name' => $validated['name'],

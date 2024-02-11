@@ -11,6 +11,8 @@ This package provides Authentication Controllers and Blade UI handling:
 - Password Management
 - Authentication Supporting Roles, Privileges or Sanctum
 - User Registration
+- Supports logging out all devices with Sanctum.
+- Provides API Tokens via Sanctum.
 
 More information is available [on the Playground Login Blade wiki.](https://github.com/gammamatrix/playground-login-blade/wiki)
 
@@ -22,9 +24,15 @@ You can install the package via composer:
 composer require gammamatrix/playground-login-blade
 ```
 
+## `artisan about`
+
+Playground Login Blade provides configurationinformation in the `artisan about` command.
+
+<img src="resources/docs/artisan-about-playground-login-blade.png" alt="screenshot of artisan about command with Playground Login Blade.">
+
 ## Configuration
 
-You can publish the config file with:
+If you need to customize the configuration, you can publish the config file with:
 ```bash
 php artisan vendor:publish --provider="Playground\Login\Blade\ServiceProvider" --tag="playground-config"
 ```
@@ -35,6 +43,64 @@ You can publish the views file with:
 ```bash
 php artisan vendor:publish --provider="Playground\Login\Blade\ServiceProvider" --tag="playground-view"
 ```
+
+### User Model
+
+Playground tries to support as many auth handling methods as possible.
+
+Currently, the following contracts are used for various package features.
+
+#### `Illuminate\Contracts\Auth\MustVerifyEmail`
+
+See the [Email Verification Controller](src/Http/Controllers/EmailVerificationController.php)
+- [routes for email verification](routes/verify.php)
+- Middleware configuration: `config('playground-login-blade.middleware.auth')`
+
+#### `Illuminate\Contracts\Auth\Authenticatable`
+
+#### `Laravel\Sanctum\Contracts\HasApiTokens`
+
+#### `Playground\Models\Contracts\Abilities`
+
+```php
+public function addAbility(mixed $ability): void;
+
+public function hasAbility(mixed $ability): bool;
+
+public function removeAbility(mixed $ability): void;
+```
+
+Abilities may be used with Sanctum. Abilities are included in `Playground\Models\User` with the trait:
+- [playground - src/Models/Traits/Abilities.php](https://github.com/gammamatrix/playground/blob/develop/src/Models/Traits/Abilities.php)
+
+
+#### `Playground\Models\Contracts\Admin`
+
+```php
+public function isAdmin(): bool;
+```
+
+#### `Playground\Models\Contracts\Privileges`
+
+```php
+public function addPrivilege(mixed $privilege): void;
+
+public function hasPrivilege(mixed $privilege): bool;
+
+public function removePrivilege(mixed $privilege): void;
+```
+
+#### `Playground\Models\Contracts\Role`
+
+```php
+public function addRole(mixed $role): void;
+
+public function hasRole(mixed $role): bool;
+
+public function removeRole(mixed $role): void;
+```
+- **TODO** Move this info to the wikis.
+
 
 ### Environment Variables
 
@@ -105,12 +171,6 @@ If `PLAYGROUND_LOGIN_BLADE_LAYOUT` is not set, it defaults to `PLAYGROUND_BLADE_
 ```sh
 composer test
 ```
-
-## `artisan about`
-
-Playground Login Blade provides information in the `artisan about` command.
-
-<img src="resources/docs/artisan-about-playground-login-blade.png" alt="screenshot of artisan about command with Playground Login Blade.">
 
 ## Changelog
 

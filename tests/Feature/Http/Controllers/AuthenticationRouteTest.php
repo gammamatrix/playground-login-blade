@@ -12,6 +12,17 @@ use Tests\Feature\Playground\Login\Blade\TestCase;
  */
 class AuthenticationRouteTest extends TestCase
 {
+    /**
+     * Set up the environment.
+     *
+     * @param  \Illuminate\Foundation\Application  $app
+     */
+    protected function getEnvironmentSetUp($app)
+    {
+        $app['config']->set('auth.providers.users.model', User::class);
+        $app['config']->set('playground-auth.token.sanctum', false);
+    }
+
     public function test_login_screen_can_be_rendered(): void
     {
         $response = $this->get('/login');
@@ -31,6 +42,23 @@ class AuthenticationRouteTest extends TestCase
 
         $this->assertAuthenticated();
         $response->assertRedirect('/');
+    }
+
+    public function test_users_can_authenticate_using_json(): void
+    {
+        $user = User::factory()->create();
+
+        $response = $this->json('post', '/login', [
+            'email' => $user->getAttributeValue('email'),
+            'password' => 'password',
+        ]);
+        $response->assertStatus(200);
+
+        $this->assertAuthenticated();
+        $response->assertJsonStructure([
+            'message',
+            'tokens',
+        ]);
     }
 
     public function test_users_cannot_authenticate_with_invalid_password(): void
@@ -60,6 +88,28 @@ class AuthenticationRouteTest extends TestCase
         $response = $this->actingAs($user)->get('/logout');
 
         $response->assertStatus(302);
+
+        $this->assertGuest();
+    }
+
+    public function test_users_can_logout_on_get_request_using_json(): void
+    {
+        /**
+         * @var \Illuminate\Contracts\Auth\Authenticatable
+         */
+        $user = User::factory()->create();
+        // dd([
+        //     'playground' => config('playground'),
+        //     'playground-login-blade' => config('playground-login-blade'),
+        // ]);
+        $response = $this->actingAs($user)->json('get', '/logout');
+
+        $response->assertStatus(200);
+
+        $response->assertJsonStructure([
+            'message',
+            'session_token',
+        ]);
 
         $this->assertGuest();
     }
