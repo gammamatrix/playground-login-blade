@@ -21,6 +21,7 @@ class AuthenticationRouteTest extends TestCase
     {
         $app['config']->set('auth.providers.users.model', User::class);
         $app['config']->set('auth.testing.password', 'password');
+        $app['config']->set('auth.testing.hashed', false);
         $app['config']->set('playground-auth.token.sanctum', false);
     }
 
