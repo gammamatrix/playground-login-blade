@@ -20,6 +20,7 @@ class AuthenticationRouteTest extends TestCase
     protected function getEnvironmentSetUp($app)
     {
         $app['config']->set('auth.providers.users.model', User::class);
+        $app['config']->set('auth.testing.password', 'password');
         $app['config']->set('playground-auth.token.sanctum', false);
     }
 
@@ -36,7 +37,7 @@ class AuthenticationRouteTest extends TestCase
 
         $response = $this->post('/login', [
             'email' => $user->getAttributeValue('email'),
-            'password' => 'password',
+            'password' => config('auth.testing.password'),
         ]);
         $response->assertStatus(302);
 
@@ -50,7 +51,7 @@ class AuthenticationRouteTest extends TestCase
 
         $response = $this->json('post', '/login', [
             'email' => $user->getAttributeValue('email'),
-            'password' => 'password',
+            'password' => config('auth.testing.password'),
         ]);
         $response->assertStatus(200);
 
@@ -175,7 +176,7 @@ class AuthenticationRouteTest extends TestCase
 
         $response = $this->post('/login', [
             'email' => $user->getAttributeValue('email'),
-            'password' => 'password',
+            'password' => config('auth.testing.password'),
         ]);
 
         $response->assertStatus(302);

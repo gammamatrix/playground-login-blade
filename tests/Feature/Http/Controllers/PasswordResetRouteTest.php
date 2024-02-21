@@ -64,8 +64,8 @@ class PasswordResetRouteTest extends TestCase
             $response = $this->post('/reset-password', [
                 'token' => $notification->token,
                 'email' => $user->getAttributeValue('email'),
-                'password' => 'password',
-                'password_confirmation' => 'password',
+                'password' => config('auth.testing.password'),
+                'password_confirmation' => config('auth.testing.password'),
             ]);
 
             $response->assertSessionHasNoErrors();
@@ -86,8 +86,8 @@ class PasswordResetRouteTest extends TestCase
             $response = $this->post('/reset-password', [
                 'token' => 'not the valid token',
                 'email' => $user->getAttributeValue('email'),
-                'password' => 'password',
-                'password_confirmation' => 'password',
+                'password' => config('auth.testing.password'),
+                'password_confirmation' => config('auth.testing.password'),
             ]);
 
             $response->assertSessionHasErrors();
@@ -108,8 +108,8 @@ class PasswordResetRouteTest extends TestCase
             $response = $this->post('/reset-password', [
                 'token' => 'not the valid token',
                 'email' => $user->getAttributeValue('email'),
-                'password' => 'password',
-                'password_confirmation' => 'password',
+                'password' => config('auth.testing.password'),
+                'password_confirmation' => config('auth.testing.password'),
             ]);
 
             $response->assertSessionHasErrors();

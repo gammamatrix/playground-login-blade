@@ -22,6 +22,7 @@ class SanctumRouteTest extends TestCase
     protected function getEnvironmentSetUp($app)
     {
         $app['config']->set('auth.providers.users.model', UserWithSanctum::class);
+        $app['config']->set('auth.testing.password', 'password');
         $app['config']->set('playground-auth.token.sanctum', true);
     }
 
@@ -34,8 +35,10 @@ class SanctumRouteTest extends TestCase
 
         $response = $this->post('/login', [
             'email' => $user->getAttributeValue('email'),
-            'password' => 'password',
+            'password' => config('auth.testing.password'),
         ]);
+
+        // $response->dump();
 
         // $response->dumpHeaders();
 
