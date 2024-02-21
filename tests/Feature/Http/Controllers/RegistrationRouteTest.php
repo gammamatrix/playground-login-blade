@@ -23,8 +23,8 @@ class RegistrationRouteTest extends TestCase
         $response = $this->post('/register', [
             'name' => 'Test User',
             'email' => $this->faker()->email,
-            'password' => 'password',
-            'password_confirmation' => 'password',
+            'password' => config('auth.testing.password'),
+            'password_confirmation' => config('auth.testing.password'),
         ]);
 
         $this->assertAuthenticated();
