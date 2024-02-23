@@ -1,6 +1,6 @@
 {
     "name": "gammamatrix/playground-login-blade",
-    "description": "Playground: Provides Blade UI for authentication handling.",
+    "description": "Playground: Provides endpoints and a Blade UI for authentication handling.",
     "keywords": [
         "blade",
         "gammamatrix",
