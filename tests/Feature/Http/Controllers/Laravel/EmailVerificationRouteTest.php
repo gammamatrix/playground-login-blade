@@ -1,8 +1,10 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Playground
  */
-namespace Tests\Feature\Playground\Login\Blade\Http\Controllers;
+namespace Tests\Feature\Playground\Login\Blade\Http\Controllers\Laravel;
 
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Auth\Notifications\VerifyEmail;
@@ -14,14 +16,18 @@ use Playground\Test\Models\User;
 use Tests\Feature\Playground\Login\Blade\TestCase;
 
 /**
- * \Tests\Feature\Playground\Login\Blade\Http\Controllers\EmailVerificationRouteTest
+ * \Tests\Feature\Playground\Login\Blade\Http\Controllers\Laravel\EmailVerificationRouteTest
  */
 class EmailVerificationRouteTest extends TestCase
 {
+    use TestTrait;
+
+    protected bool $load_migrations_laravel = true;
+
     public function test_email_verification_screen_can_be_rendered(): void
     {
         /**
-         * @var \Illuminate\Contracts\Auth\Authenticatable
+         * @var User $user
          */
         $user = User::factory()->create([
             'email_verified_at' => null,
@@ -35,7 +41,7 @@ class EmailVerificationRouteTest extends TestCase
     public function test_email_verification_screen_is_not_rendered_if_already_verified(): void
     {
         /**
-         * @var \Illuminate\Contracts\Auth\Authenticatable
+         * @var User $user
          */
         $user = User::factory()->create([
             'email_verified_at' => now(),
@@ -84,7 +90,7 @@ class EmailVerificationRouteTest extends TestCase
         Notification::fake();
 
         /**
-         * @var \Illuminate\Contracts\Auth\Authenticatable
+         * @var User $user
          */
         $user = User::factory()->create([
             'email_verified_at' => null,
@@ -113,7 +119,7 @@ class EmailVerificationRouteTest extends TestCase
         Notification::fake();
 
         /**
-         * @var \Illuminate\Contracts\Auth\Authenticatable
+         * @var User $user
          */
         $user = User::factory()->create([
             'email_verified_at' => now(),
@@ -131,7 +137,7 @@ class EmailVerificationRouteTest extends TestCase
     public function test_email_can_be_verified(): void
     {
         /**
-         * @var \Illuminate\Contracts\Auth\Authenticatable
+         * @var User $user
          */
         $user = User::factory()->create([
             'email_verified_at' => null,
@@ -169,7 +175,7 @@ class EmailVerificationRouteTest extends TestCase
     public function test_email_is_not_verified_with_invalid_hash(): void
     {
         /**
-         * @var \Illuminate\Contracts\Auth\Authenticatable
+         * @var User $user
          */
         $user = User::factory()->create([
             'email_verified_at' => null,
@@ -202,7 +208,7 @@ class EmailVerificationRouteTest extends TestCase
     public function test_email_is_not_verified_with_invalid_user_id(): void
     {
         /**
-         * @var \Illuminate\Contracts\Auth\Authenticatable
+         * @var User $user
          */
         $user = User::factory()->create([
             'email_verified_at' => null,
@@ -235,7 +241,7 @@ class EmailVerificationRouteTest extends TestCase
     public function test_email_verified_with_already_verified(): void
     {
         /**
-         * @var \Illuminate\Contracts\Auth\Authenticatable
+         * @var User $user
          */
         $user = User::factory()->create([
             'email_verified_at' => now(),

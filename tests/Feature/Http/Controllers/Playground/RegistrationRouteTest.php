@@ -1,16 +1,22 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Playground
  */
-namespace Tests\Feature\Playground\Login\Blade\Http\Controllers;
+namespace Tests\Feature\Playground\Login\Blade\Http\Controllers\Playground;
 
 use Tests\Feature\Playground\Login\Blade\TestCase;
 
 /**
- * \Tests\Feature\Playground\Login\Blade\Http\Controllers\RegistrationRouteTest
+ * \Tests\Feature\Playground\Login\Blade\Http\Controllers\Playground\RegistrationRouteTest
  */
 class RegistrationRouteTest extends TestCase
 {
+    use TestTrait;
+
+    protected bool $load_migrations_playground = true;
+
     public function test_registration_screen_can_be_rendered(): void
     {
         $response = $this->get('/register');

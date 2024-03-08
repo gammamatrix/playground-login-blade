@@ -1,21 +1,27 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Playground
  */
-namespace Tests\Feature\Playground\Login\Blade\Http\Controllers;
+namespace Tests\Feature\Playground\Login\Blade\Http\Controllers\Playground;
 
-use Playground\Test\Models\User;
+use Playground\Test\Models\AppPlaygroundUser as User;
 use Tests\Feature\Playground\Login\Blade\TestCase;
 
 /**
- * \Tests\Feature\Playground\Login\Blade\Http\Controllers\PasswordConfirmationRouteTest
+ * \Tests\Feature\Playground\Login\Blade\Http\Controllers\Playground\PasswordConfirmationRouteTest
  */
 class PasswordConfirmationRouteTest extends TestCase
 {
+    use TestTrait;
+
+    protected bool $load_migrations_playground = true;
+
     public function test_confirm_password_screen_can_be_rendered(): void
     {
         /**
-         * @var \Illuminate\Contracts\Auth\Authenticatable
+         * @var User $user
          */
         $user = User::factory()->create();
 
@@ -27,7 +33,7 @@ class PasswordConfirmationRouteTest extends TestCase
     public function test_password_can_be_confirmed(): void
     {
         /**
-         * @var \Illuminate\Contracts\Auth\Authenticatable
+         * @var User $user
          */
         $user = User::factory()->create();
 
@@ -42,7 +48,7 @@ class PasswordConfirmationRouteTest extends TestCase
     public function test_password_is_not_confirmed_with_invalid_password(): void
     {
         /**
-         * @var \Illuminate\Contracts\Auth\Authenticatable
+         * @var User $user
          */
         $user = User::factory()->create();
 

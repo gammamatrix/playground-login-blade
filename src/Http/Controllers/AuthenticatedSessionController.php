@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Playground
  */
@@ -11,7 +13,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\View\View;
-use Laravel\Sanctum\Contracts\HasApiTokens;
 use Laravel\Sanctum\PersonalAccessToken;
 use Playground\Auth\Issuer;
 use Playground\Login\Blade\Http\Requests\LoginRequest;
@@ -41,7 +42,7 @@ class AuthenticatedSessionController extends Controller
     }
 
     /**
-     * Authenticated the user.
+     * Authenticate the user.
      *
      * @route POST /login login.post
      */
@@ -51,12 +52,19 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
+        $useSession = ! empty(config('playground-login-blade.session'));
+
+        /**
+         * @var Authenticatable $user
+         */
+        $user = $request->user();
+
+        $issuer = app(Issuer::class);
+
         $payload = [
             'message' => __('authenticated'),
-            'tokens' => [],
+            'tokens' => $issuer->authorize($user),
         ];
-
-        $useSession = ! empty(config('playground-login-blade.session'));
 
         /**
          * @var array<string, mixed> $config_token
@@ -69,14 +77,13 @@ class AuthenticatedSessionController extends Controller
         ) {
             $token_name = $config_token['name'];
         }
-
+        // dd([
+        //     '__METHOD__' => __METHOD__,
+        //     '$issuer' => $issuer,
+        // ]);
         if (! empty($config_token['sanctum'])) {
-            /**
-             * @var Authenticatable&HasApiTokens $user
-             */
-            $user = $request->user();
             if ($user) {
-                $payload['tokens'] = app(Issuer::class)->sanctum($user);
+                // $payload['tokens'] = app(Issuer::class)->sanctum($user);
 
                 if ($useSession
                     && ! empty($payload['tokens'][$token_name])
@@ -109,35 +116,21 @@ class AuthenticatedSessionController extends Controller
      */
     public function destroy(Request $request): JsonResponse|RedirectResponse
     {
-        $all = $request->has('all') || $request->has('everywhere');
+        $config = config('playground-auth');
+        $config = is_array($config) ? $config : [];
 
-        if (! empty(config('playground-auth.token.sanctum'))) {
+        if (! empty($config['sanctum'])
+            && ! empty($config['token'])
+            && is_array($config['token'])
+            && ! empty($config['token']['sanctum'])
+        ) {
             /**
-             * @var Authenticatable&HasApiTokens $user
+             * @var Authenticatable $user
              */
             $user = $request->user();
 
             if ($user) {
-                if ($all) {
-                    $user->tokens()->delete();
-                } else {
-                    /**
-                     * @var PersonalAccessToken $token
-                     */
-                    $token = $user->currentAccessToken();
-
-                    $hash = $request->session()->get('sanctum');
-                    if (! $token && $hash && is_string($hash)) {
-                        /**
-                         * @var PersonalAccessToken $token
-                         */
-                        $token = PersonalAccessToken::findToken($hash);
-                    }
-
-                    if ($token) {
-                        $token->delete();
-                    }
-                }
+                $this->destroyTokens($user, $request);
             }
         }
 
@@ -155,6 +148,39 @@ class AuthenticatedSessionController extends Controller
         }
 
         return redirect('/');
+    }
+
+    protected function destroyTokens(
+        Authenticatable $user,
+        Request $request
+    ): void {
+        $all = $request->has('all') || $request->has('everywhere');
+
+        if ($all) {
+            if (is_callable([$user, 'tokens'])) {
+                $user->tokens()->delete();
+            }
+        } else {
+            /**
+             * @var ?PersonalAccessToken $token
+             */
+            $token = null;
+            if (is_callable([$user, 'currentAccessToken'])) {
+                $token = $user->currentAccessToken();
+            }
+
+            $hash = $request->session()->get('sanctum');
+            if (! $token && $hash && is_string($hash)) {
+                /**
+                 * @var PersonalAccessToken $token
+                 */
+                $token = PersonalAccessToken::findToken($hash);
+            }
+
+            if ($token) {
+                $token->delete();
+            }
+        }
     }
 
     /**
