@@ -1,8 +1,10 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Playground
  */
-namespace Tests\Feature\Playground\Login\Blade\Http\Controllers;
+namespace Tests\Feature\Playground\Login\Blade\Http\Controllers\Laravel;
 
 use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Support\Facades\Notification;
@@ -10,10 +12,14 @@ use Playground\Test\Models\User;
 use Tests\Feature\Playground\Login\Blade\TestCase;
 
 /**
- * \Tests\Feature\Playground\Login\Blade\Http\Controllers\PasswordResetRouteTest
+ * \Tests\Feature\Playground\Login\Blade\Http\Controllers\Laravel\PasswordResetRouteTest
  */
 class PasswordResetRouteTest extends TestCase
 {
+    use TestTrait;
+
+    protected bool $load_migrations_laravel = true;
+
     public function test_reset_password_link_screen_can_be_rendered(): void
     {
         $response = $this->get('/forgot-password');
@@ -25,6 +31,9 @@ class PasswordResetRouteTest extends TestCase
     {
         Notification::fake();
 
+        /**
+         * @var User $user
+         */
         $user = User::factory()->create();
 
         $this->post('/forgot-password', ['email' => $user->getAttributeValue('email')]);
@@ -36,6 +45,9 @@ class PasswordResetRouteTest extends TestCase
     {
         Notification::fake();
 
+        /**
+         * @var User $user
+         */
         $user = User::factory()->create();
 
         $response = $this->post('/forgot-password', ['email' => $user->getAttributeValue('email')]);
@@ -55,6 +67,9 @@ class PasswordResetRouteTest extends TestCase
     {
         Notification::fake();
 
+        /**
+         * @var User $user
+         */
         $user = User::factory()->create();
 
         $response = $this->post('/forgot-password', ['email' => $user->getAttributeValue('email')]);
@@ -78,6 +93,9 @@ class PasswordResetRouteTest extends TestCase
     {
         Notification::fake();
 
+        /**
+         * @var User $user
+         */
         $user = User::factory()->create();
 
         $this->post('/forgot-password', ['email' => $user->getAttributeValue('email')]);
@@ -100,6 +118,9 @@ class PasswordResetRouteTest extends TestCase
     {
         Notification::fake();
 
+        /**
+         * @var User $user
+         */
         $user = User::factory()->make();
 
         $this->post('/forgot-password', ['email' => $user->getAttributeValue('email')]);

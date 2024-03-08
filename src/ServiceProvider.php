@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Playground
  */
@@ -45,7 +47,7 @@ class ServiceProvider extends AuthServiceProvider
 
                 // Publish Blade Views
                 $this->publishes([
-                    dirname(__DIR__).'/resources/views' => resource_path(Str::of('vendor/'.$this->package)->beforeLast('-blade')),
+                    dirname(__DIR__).'/resources/views' => resource_path(Str::of('vendor/'.$this->package)->beforeLast('-blade')->toString()),
                 ], 'playground-blade');
             }
 

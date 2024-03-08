@@ -59,6 +59,7 @@ $rules_laravel = [
     'encoding' => true,
     'full_opening_tag' => true,
     'fully_qualified_strict_types' => true,
+    'declare_strict_types' => true,
     'function_declaration' => true,
     'general_phpdoc_tag_rename' => true,
     'heredoc_to_nowdoc' => true,

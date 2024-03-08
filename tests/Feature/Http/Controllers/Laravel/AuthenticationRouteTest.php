@@ -1,29 +1,35 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Playground
  */
-namespace Tests\Feature\Playground\Login\Blade\Http\Controllers;
+namespace Tests\Feature\Playground\Login\Blade\Http\Controllers\Laravel;
 
 use Playground\Test\Models\User;
 use Tests\Feature\Playground\Login\Blade\TestCase;
 
 /**
- * \Tests\Feature\Playground\Login\Blade\Http\Controllers\AuthenticationRouteTest
+ * \Tests\Feature\Playground\Login\Blade\Http\Controllers\Laravel\AuthenticationRouteTest
  */
 class AuthenticationRouteTest extends TestCase
 {
-    /**
-     * Set up the environment.
-     *
-     * @param  \Illuminate\Foundation\Application  $app
-     */
-    protected function getEnvironmentSetUp($app)
-    {
-        $app['config']->set('auth.providers.users.model', User::class);
-        $app['config']->set('auth.testing.password', 'password');
-        $app['config']->set('auth.testing.hashed', false);
-        $app['config']->set('playground-auth.token.sanctum', false);
-    }
+    use TestTrait;
+
+    protected bool $load_migrations_laravel = true;
+
+    // /**
+    //  * Set up the environment.
+    //  *
+    //  * @param  \Illuminate\Foundation\Application  $app
+    //  */
+    // protected function getEnvironmentSetUp($app)
+    // {
+    //     $app['config']->set('auth.providers.users.model', User::class);
+    //     $app['config']->set('auth.testing.password', 'password');
+    //     $app['config']->set('auth.testing.hashed', false);
+    //     $app['config']->set('playground-auth.token.sanctum', false);
+    // }
 
     public function test_login_screen_can_be_rendered(): void
     {
@@ -32,10 +38,18 @@ class AuthenticationRouteTest extends TestCase
         $response->assertStatus(200);
     }
 
-    public function test_users_can_authenticate_using_the_login_screen(): void
+    public function test_users_can_authenticate_using_the_login_screen_laravel(): void
     {
+        /**
+         * @var User $user
+         */
         $user = User::factory()->create();
 
+        // dump([
+        //     '__METHOD__' => __METHOD__,
+        //     '$user' => $user->toArray(),
+        //     'config(playground-auth)' => config('playground-auth'),
+        // ]);
         $response = $this->post('/login', [
             'email' => $user->getAttributeValue('email'),
             'password' => config('auth.testing.password'),
@@ -48,6 +62,9 @@ class AuthenticationRouteTest extends TestCase
 
     public function test_users_can_authenticate_using_json(): void
     {
+        /**
+         * @var User $user
+         */
         $user = User::factory()->create();
 
         $response = $this->json('post', '/login', [
@@ -65,6 +82,9 @@ class AuthenticationRouteTest extends TestCase
 
     public function test_users_cannot_authenticate_with_invalid_password(): void
     {
+        /**
+         * @var User $user
+         */
         $user = User::factory()->create();
 
         $response = $this->post('/login', [
@@ -80,7 +100,7 @@ class AuthenticationRouteTest extends TestCase
     public function test_users_can_logout_on_get_request(): void
     {
         /**
-         * @var \Illuminate\Contracts\Auth\Authenticatable
+         * @var User $user
          */
         $user = User::factory()->create();
         // dd([
@@ -97,7 +117,7 @@ class AuthenticationRouteTest extends TestCase
     public function test_users_can_logout_on_get_request_using_json(): void
     {
         /**
-         * @var \Illuminate\Contracts\Auth\Authenticatable
+         * @var User $user
          */
         $user = User::factory()->create();
         // dd([
@@ -119,7 +139,7 @@ class AuthenticationRouteTest extends TestCase
     public function test_users_can_logout_on_post_request(): void
     {
         /**
-         * @var \Illuminate\Contracts\Auth\Authenticatable
+         * @var User $user
          */
         $user = User::factory()->create();
 
@@ -163,6 +183,9 @@ class AuthenticationRouteTest extends TestCase
 
     public function test_login_repeat_under_rate_limit_and_clear(): void
     {
+        /**
+         * @var User $user
+         */
         $user = User::factory()->create();
 
         $limit = 2;
@@ -188,6 +211,9 @@ class AuthenticationRouteTest extends TestCase
 
     public function test_login_repeat_and_hit_rate_limit(): void
     {
+        /**
+         * @var User $user
+         */
         $user = User::factory()->create();
 
         $limit = 6;
