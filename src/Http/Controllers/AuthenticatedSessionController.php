@@ -178,6 +178,9 @@ class AuthenticatedSessionController extends Controller
         return redirect('/');
     }
 
+    /**
+     * @param array<string, mixed> $config
+     */
     protected function destroyTokens(
         Authenticatable $user,
         Request $request,
