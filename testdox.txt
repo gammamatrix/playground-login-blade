@@ -1,6 +1,19 @@
-Authentication Route (Tests\Feature\Playground\Login\Blade\Http\Controllers\AuthenticationRoute)
+Authentication Route (Tests\Feature\Playground\Login\Blade\Http\Controllers\Laravel\AuthenticationRoute)
  [x] Login screen can be rendered
- [x] Users can authenticate using the login screen
+ [x] Users can authenticate using the login screen laravel
+ [x] Users can authenticate using json
+ [x] Users cannot authenticate with invalid password
+ [x] Users can logout on get request
+ [x] Users can logout on get request using json
+ [x] Users can logout on post request
+ [x] Guests can logout on get request
+ [x] Csfr token request
+ [x] Login repeat under rate limit and clear
+ [x] Login repeat and hit rate limit
+
+Authentication Route (Tests\Feature\Playground\Login\Blade\Http\Controllers\Playground\AuthenticationRoute)
+ [x] Login screen can be rendered
+ [x] Users can authenticate using the login screen playground
  [x] Users can authenticate using json
  [x] Users cannot authenticate with invalid password
  [x] Users can logout on get request
@@ -14,7 +27,7 @@ Authentication Route (Tests\Feature\Playground\Login\Blade\Http\Controllers\Auth
 Command (Tests\Feature\Playground\Login\Blade\Console\Commands\About\Command)
  [x] Command about displays package information and succeed with code 0
 
-Email Verification Route (Tests\Feature\Playground\Login\Blade\Http\Controllers\EmailVerificationRoute)
+Email Verification Route (Tests\Feature\Playground\Login\Blade\Http\Controllers\Laravel\EmailVerificationRoute)
  [x] Email verification screen can be rendered
  [x] Email verification screen is not rendered if already verified
  [x] Json send email verification notification as guest
@@ -26,12 +39,35 @@ Email Verification Route (Tests\Feature\Playground\Login\Blade\Http\Controllers\
  [x] Email is not verified with invalid user id
  [x] Email verified with already verified
 
-Password Confirmation Route (Tests\Feature\Playground\Login\Blade\Http\Controllers\PasswordConfirmationRoute)
+Email Verification Route (Tests\Feature\Playground\Login\Blade\Http\Controllers\Playground\EmailVerificationRoute)
+ [x] Email verification screen can be rendered
+ [x] Email verification screen is not rendered if already verified
+ [x] Json send email verification notification as guest
+ [x] Send email verification notification as guest and redirect
+ [x] Send email verification notification as user
+ [x] Send email verification notification when already verified
+ [x] Email can be verified
+ [x] Email is not verified with invalid hash
+ [x] Email is not verified with invalid user id
+ [x] Email verified with already verified
+
+Logout Route (Tests\Feature\Playground\Login\Blade\Http\Controllers\Sanctum\LogoutRoute)
+ [x] Sanctum users can authenticate and logout and delete token
+ [x] Sanctum users can logout without token using json
+ [x] Sanctum users can logout all tokens without token using json
+ [x] Sanctum users can logout everywhere tokens without token
+
+Password Confirmation Route (Tests\Feature\Playground\Login\Blade\Http\Controllers\Laravel\PasswordConfirmationRoute)
  [x] Confirm password screen can be rendered
  [x] Password can be confirmed
  [x] Password is not confirmed with invalid password
 
-Password Reset Route (Tests\Feature\Playground\Login\Blade\Http\Controllers\PasswordResetRoute)
+Password Confirmation Route (Tests\Feature\Playground\Login\Blade\Http\Controllers\Playground\PasswordConfirmationRoute)
+ [x] Confirm password screen can be rendered
+ [x] Password can be confirmed
+ [x] Password is not confirmed with invalid password
+
+Password Reset Route (Tests\Feature\Playground\Login\Blade\Http\Controllers\Laravel\PasswordResetRoute)
  [x] Reset password link screen can be rendered
  [x] Reset password link can be requested
  [x] Reset password screen can be rendered
@@ -39,13 +75,19 @@ Password Reset Route (Tests\Feature\Playground\Login\Blade\Http\Controllers\Pass
  [x] Password reset with invalid token
  [x] Password reset with invalid user
 
-Registration Route (Tests\Feature\Playground\Login\Blade\Http\Controllers\RegistrationRoute)
+Password Reset Route (Tests\Feature\Playground\Login\Blade\Http\Controllers\Playground\PasswordResetRoute)
+ [x] Reset password link screen can be rendered
+ [x] Reset password link can be requested
+ [x] Reset password screen can be rendered
+ [x] Password can be reset with valid token
+ [x] Password reset with invalid token
+ [x] Password reset with invalid user
+
+Registration Route (Tests\Feature\Playground\Login\Blade\Http\Controllers\Laravel\RegistrationRoute)
  [x] Registration screen can be rendered
  [x] New users can register
 
-Sanctum Route (Tests\Feature\Playground\Login\Blade\Http\Controllers\SanctumRoute)
- [x] Sanctum users can authenticate and logout and delete token
- [x] Sanctum users can logout without token using json
- [x] Sanctum users can logout all tokens without token using json
- [x] Sanctum users can logout everywhere tokens without token
+Registration Route (Tests\Feature\Playground\Login\Blade\Http\Controllers\Playground\RegistrationRoute)
+ [x] Registration screen can be rendered
+ [x] New users can register
 

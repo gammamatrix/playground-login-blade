@@ -51,10 +51,24 @@
         </style>
     </head>
     <body>
-        <h2>Authentication Route (Tests\Feature\Playground\Login\Blade\Http\Controllers\AuthenticationRoute)</h2>
+        <h2>Authentication Route (Tests\Feature\Playground\Login\Blade\Http\Controllers\Laravel\AuthenticationRoute)</h2>
         <ul>
             <li class="success">Login screen can be rendered</li>
-            <li class="success">Users can authenticate using the login screen</li>
+            <li class="success">Users can authenticate using the login screen laravel</li>
+            <li class="success">Users can authenticate using json</li>
+            <li class="success">Users cannot authenticate with invalid password</li>
+            <li class="success">Users can logout on get request</li>
+            <li class="success">Users can logout on get request using json</li>
+            <li class="success">Users can logout on post request</li>
+            <li class="success">Guests can logout on get request</li>
+            <li class="success">Csfr token request</li>
+            <li class="success">Login repeat under rate limit and clear</li>
+            <li class="success">Login repeat and hit rate limit</li>
+        </ul>
+        <h2>Authentication Route (Tests\Feature\Playground\Login\Blade\Http\Controllers\Playground\AuthenticationRoute)</h2>
+        <ul>
+            <li class="success">Login screen can be rendered</li>
+            <li class="success">Users can authenticate using the login screen playground</li>
             <li class="success">Users can authenticate using json</li>
             <li class="success">Users cannot authenticate with invalid password</li>
             <li class="success">Users can logout on get request</li>
@@ -69,7 +83,7 @@
         <ul>
             <li class="success">Command about displays package information and succeed with code 0</li>
         </ul>
-        <h2>Email Verification Route (Tests\Feature\Playground\Login\Blade\Http\Controllers\EmailVerificationRoute)</h2>
+        <h2>Email Verification Route (Tests\Feature\Playground\Login\Blade\Http\Controllers\Laravel\EmailVerificationRoute)</h2>
         <ul>
             <li class="success">Email verification screen can be rendered</li>
             <li class="success">Email verification screen is not rendered if already verified</li>
@@ -82,13 +96,39 @@
             <li class="success">Email is not verified with invalid user id</li>
             <li class="success">Email verified with already verified</li>
         </ul>
-        <h2>Password Confirmation Route (Tests\Feature\Playground\Login\Blade\Http\Controllers\PasswordConfirmationRoute)</h2>
+        <h2>Email Verification Route (Tests\Feature\Playground\Login\Blade\Http\Controllers\Playground\EmailVerificationRoute)</h2>
+        <ul>
+            <li class="success">Email verification screen can be rendered</li>
+            <li class="success">Email verification screen is not rendered if already verified</li>
+            <li class="success">Json send email verification notification as guest</li>
+            <li class="success">Send email verification notification as guest and redirect</li>
+            <li class="success">Send email verification notification as user</li>
+            <li class="success">Send email verification notification when already verified</li>
+            <li class="success">Email can be verified</li>
+            <li class="success">Email is not verified with invalid hash</li>
+            <li class="success">Email is not verified with invalid user id</li>
+            <li class="success">Email verified with already verified</li>
+        </ul>
+        <h2>Logout Route (Tests\Feature\Playground\Login\Blade\Http\Controllers\Sanctum\LogoutRoute)</h2>
+        <ul>
+            <li class="success">Sanctum users can authenticate and logout and delete token</li>
+            <li class="success">Sanctum users can logout without token using json</li>
+            <li class="success">Sanctum users can logout all tokens without token using json</li>
+            <li class="success">Sanctum users can logout everywhere tokens without token</li>
+        </ul>
+        <h2>Password Confirmation Route (Tests\Feature\Playground\Login\Blade\Http\Controllers\Laravel\PasswordConfirmationRoute)</h2>
         <ul>
             <li class="success">Confirm password screen can be rendered</li>
             <li class="success">Password can be confirmed</li>
             <li class="success">Password is not confirmed with invalid password</li>
         </ul>
-        <h2>Password Reset Route (Tests\Feature\Playground\Login\Blade\Http\Controllers\PasswordResetRoute)</h2>
+        <h2>Password Confirmation Route (Tests\Feature\Playground\Login\Blade\Http\Controllers\Playground\PasswordConfirmationRoute)</h2>
+        <ul>
+            <li class="success">Confirm password screen can be rendered</li>
+            <li class="success">Password can be confirmed</li>
+            <li class="success">Password is not confirmed with invalid password</li>
+        </ul>
+        <h2>Password Reset Route (Tests\Feature\Playground\Login\Blade\Http\Controllers\Laravel\PasswordResetRoute)</h2>
         <ul>
             <li class="success">Reset password link screen can be rendered</li>
             <li class="success">Reset password link can be requested</li>
@@ -97,17 +137,24 @@
             <li class="success">Password reset with invalid token</li>
             <li class="success">Password reset with invalid user</li>
         </ul>
-        <h2>Registration Route (Tests\Feature\Playground\Login\Blade\Http\Controllers\RegistrationRoute)</h2>
+        <h2>Password Reset Route (Tests\Feature\Playground\Login\Blade\Http\Controllers\Playground\PasswordResetRoute)</h2>
+        <ul>
+            <li class="success">Reset password link screen can be rendered</li>
+            <li class="success">Reset password link can be requested</li>
+            <li class="success">Reset password screen can be rendered</li>
+            <li class="success">Password can be reset with valid token</li>
+            <li class="success">Password reset with invalid token</li>
+            <li class="success">Password reset with invalid user</li>
+        </ul>
+        <h2>Registration Route (Tests\Feature\Playground\Login\Blade\Http\Controllers\Laravel\RegistrationRoute)</h2>
         <ul>
             <li class="success">Registration screen can be rendered</li>
             <li class="success">New users can register</li>
         </ul>
-        <h2>Sanctum Route (Tests\Feature\Playground\Login\Blade\Http\Controllers\SanctumRoute)</h2>
+        <h2>Registration Route (Tests\Feature\Playground\Login\Blade\Http\Controllers\Playground\RegistrationRoute)</h2>
         <ul>
-            <li class="success">Sanctum users can authenticate and logout and delete token</li>
-            <li class="success">Sanctum users can logout without token using json</li>
-            <li class="success">Sanctum users can logout all tokens without token using json</li>
-            <li class="success">Sanctum users can logout everywhere tokens without token</li>
+            <li class="success">Registration screen can be rendered</li>
+            <li class="success">New users can register</li>
         </ul>
     </body>
 </html>
