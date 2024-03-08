@@ -56,6 +56,7 @@ Logout Route (Tests\Feature\Playground\Login\Blade\Http\Controllers\Sanctum\Logo
  [x] Sanctum users can logout without token using json
  [x] Sanctum users can logout all tokens without token using json
  [x] Sanctum users can logout everywhere tokens without token
+ [x] Sanctum users can authenticate and logout and delete token with sessions
 
 Password Confirmation Route (Tests\Feature\Playground\Login\Blade\Http\Controllers\Laravel\PasswordConfirmationRoute)
  [x] Confirm password screen can be rendered

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <crap_result>
   <project/>
-  <timestamp>2024-03-08 04:30:37</timestamp>
+  <timestamp>2024-03-08 19:38:53</timestamp>
   <stats>
     <name>Method Crap Stats</name>
     <methodCount>36</methodCount>
     <crapMethodCount>0</crapMethodCount>
     <crapLoad>0</crapLoad>
-    <totalCrap>126.66</totalCrap>
+    <totalCrap>142</totalCrap>
     <crapMethodPercent>0</crapMethodPercent>
   </stats>
   <methods>
@@ -28,9 +28,9 @@
       <methodName>store</methodName>
       <methodSignature>store(Playground\Login\Blade\Http\Requests\LoginRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</methodSignature>
       <fullMethod>store(Playground\Login\Blade\Http\Requests\LoginRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</fullMethod>
-      <crap>10.29</crap>
-      <complexity>10</complexity>
-      <coverage>85.71</coverage>
+      <crap>16</crap>
+      <complexity>16</complexity>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -39,8 +39,8 @@
       <methodName>destroy</methodName>
       <methodSignature>destroy(Illuminate\Http\Request $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</methodSignature>
       <fullMethod>destroy(Illuminate\Http\Request $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</fullMethod>
-      <crap>8</crap>
-      <complexity>8</complexity>
+      <crap>10</crap>
+      <complexity>10</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -48,11 +48,11 @@
       <package>Playground\Login\Blade\Http\Controllers</package>
       <className>Playground\Login\Blade\Http\Controllers\AuthenticatedSessionController</className>
       <methodName>destroyTokens</methodName>
-      <methodSignature>destroyTokens(Illuminate\Contracts\Auth\Authenticatable $user, Illuminate\Http\Request $request): void</methodSignature>
-      <fullMethod>destroyTokens(Illuminate\Contracts\Auth\Authenticatable $user, Illuminate\Http\Request $request): void</fullMethod>
-      <crap>9.37</crap>
-      <complexity>9</complexity>
-      <coverage>83.33</coverage>
+      <methodSignature>destroyTokens(Illuminate\Contracts\Auth\Authenticatable $user, Illuminate\Http\Request $request, array $config): void</methodSignature>
+      <fullMethod>destroyTokens(Illuminate\Contracts\Auth\Authenticatable $user, Illuminate\Http\Request $request, array $config): void</fullMethod>
+      <crap>17</crap>
+      <complexity>17</complexity>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
