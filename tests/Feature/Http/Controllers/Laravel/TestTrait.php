@@ -34,5 +34,7 @@ trait TestTrait
         $app['config']->set('playground-auth.hasRole', false);
         $app['config']->set('playground-auth.userRole', false);
         $app['config']->set('playground-auth.userRoles', false);
+
+        $app['config']->set('playground-login-blade.session', true);
     }
 }

@@ -121,4 +121,35 @@ class LogoutRouteTest extends TestCase
 
         $this->assertGuest();
     }
+
+    public function test_sanctum_users_can_authenticate_and_logout_and_delete_token_with_sessions(): void
+    {
+        config([
+            'playground-auth.token.session' => true,
+            'playground-login-blade.session' => true,
+        ]);
+        /**
+         * @var UserWithSanctum $user
+         */
+        $user = UserWithSanctum::factory()->create();
+
+        $response = $this->post('/login', [
+            'email' => $user->getAttributeValue('email'),
+            'password' => config('auth.testing.password'),
+        ]);
+
+        // $response->dump();
+
+        // $response->dumpHeaders();
+
+        // $response->dumpSession();
+
+        $response->assertStatus(302);
+
+        $this->assertAuthenticated();
+        $response->assertRedirect('/');
+
+        $response = $this->actingAs($user)->json('get', '/logout');
+        $this->assertGuest();
+    }
 }

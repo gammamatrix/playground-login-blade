@@ -50,9 +50,36 @@ class AuthenticatedSessionController extends Controller
     {
         $request->authenticate();
 
-        $request->session()->regenerate();
-
         $useSession = ! empty(config('playground-login-blade.session'));
+
+        if ($useSession) {
+            $request->session()->regenerate();
+        }
+
+        /**
+         * @var array<string, mixed> $config
+         */
+        $config = config('playground-auth');
+
+        $session_name = '';
+        $token_name = '';
+
+        if (is_array($config)
+            && ! empty($config['sanctum'])
+            && is_array($config['token'])
+            && ! empty($config['token']['sanctum'])
+        ) {
+            if (! empty($config['token']['session_name'])
+                && is_string($config['token']['session_name'])
+            ) {
+                $session_name = $config['token']['session_name'];
+            }
+            if (! empty($config['token']['name'])
+                && is_string($config['token']['name'])
+            ) {
+                $token_name = $config['token']['name'];
+            }
+        }
 
         /**
          * @var Authenticatable $user
@@ -66,39 +93,32 @@ class AuthenticatedSessionController extends Controller
             'tokens' => $issuer->authorize($user),
         ];
 
-        /**
-         * @var array<string, mixed> $config_token
-         */
-        $config_token = config('playground-auth.token');
-
-        $token_name = '';
-        if (! empty($config_token['name'])
-            && is_string($config_token['name'])
-        ) {
-            $token_name = $config_token['name'];
-        }
-        // dd([
+        // dump([
         //     '__METHOD__' => __METHOD__,
+        //     '$config' => $config,
+        //     '$useSession' => $useSession,
+        //     '$session_name' => $session_name,
+        //     '$token_name' => $token_name,
+        //     '$user' => $user,
         //     '$issuer' => $issuer,
+        //     '$payload' => $payload,
         // ]);
-        if (! empty($config_token['sanctum'])) {
-            if ($user) {
-                // $payload['tokens'] = app(Issuer::class)->sanctum($user);
 
-                if ($useSession
-                    && ! empty($payload['tokens'][$token_name])
+        if ($useSession) {
+
+            $payload['tokens']['session'] = $request->session()->token();
+
+            if ($token_name && $session_name) {
+
+                if (! empty($payload['tokens'][$token_name])
                     && is_string($payload['tokens'][$token_name])
                 ) {
                     $request->session()->put(
-                        'sanctum',
+                        $session_name,
                         $payload['tokens'][$token_name]
                     );
                 }
             }
-        }
-
-        if ($useSession) {
-            $payload['tokens']['session'] = $request->session()->token();
         }
 
         if ($request->expectsJson()) {
@@ -119,6 +139,8 @@ class AuthenticatedSessionController extends Controller
         $config = config('playground-auth');
         $config = is_array($config) ? $config : [];
 
+        $useSession = ! empty(config('playground-login-blade.session'));
+
         if (! empty($config['sanctum'])
             && ! empty($config['token'])
             && is_array($config['token'])
@@ -130,21 +152,27 @@ class AuthenticatedSessionController extends Controller
             $user = $request->user();
 
             if ($user) {
-                $this->destroyTokens($user, $request);
+                $this->destroyTokens($user, $request, $config);
             }
         }
 
         Auth::guard('web')->logout();
 
-        $request->session()->invalidate();
+        if ($useSession) {
+            $request->session()->invalidate();
 
-        $request->session()->regenerateToken();
+            $request->session()->regenerateToken();
+        }
 
         if ($request->expectsJson()) {
-            return response()->json([
+            $data = [
                 'message' => __('logout'),
-                'session_token' => $request->session()->token(),
-            ]);
+            ];
+            if ($useSession) {
+                $data['session_token'] = $request->session()->token();
+            }
+
+            return response()->json($data);
         }
 
         return redirect('/');
@@ -152,9 +180,11 @@ class AuthenticatedSessionController extends Controller
 
     protected function destroyTokens(
         Authenticatable $user,
-        Request $request
+        Request $request,
+        array $config
     ): void {
         $all = $request->has('all') || $request->has('everywhere');
+        $useSession = ! empty(config('playground-login-blade.session'));
 
         if ($all) {
             if (is_callable([$user, 'tokens'])) {
@@ -169,12 +199,24 @@ class AuthenticatedSessionController extends Controller
                 $token = $user->currentAccessToken();
             }
 
-            $hash = $request->session()->get('sanctum');
-            if (! $token && $hash && is_string($hash)) {
-                /**
-                 * @var PersonalAccessToken $token
-                 */
-                $token = PersonalAccessToken::findToken($hash);
+            if ($useSession) {
+                $session_name = '';
+                if (! empty($config['sanctum'])
+                    && ! empty($config['token'])
+                    && is_array($config['token'])
+                    && ! empty($config['token']['sanctum'])
+                    && ! empty($config['token']['session_name'])
+                    && is_string($config['token']['session_name'])
+                ) {
+                    $session_name = $config['token']['session_name'];
+                }
+                $hash = $session_name ? $request->session()->get($session_name) : null;
+                if (! $token && $hash && is_string($hash)) {
+                    /**
+                     * @var PersonalAccessToken $token
+                     */
+                    $token = PersonalAccessToken::findToken($hash);
+                }
             }
 
             if ($token) {
