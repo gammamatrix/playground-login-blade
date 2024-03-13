@@ -4,7 +4,7 @@
 [![Test Coverage](https://raw.githubusercontent.com/gammamatrix/playground-login-blade/testing/develop/coverage.svg)](tests)
 [![PHPStan Level 9 src and tests](https://img.shields.io/badge/PHPStan-level%209-brightgreen)](.github/workflows/ci.yml#L120)
 
-The Playground Login Blade package for [Laravel](https://laravel.com/docs/10.x) applications.
+The Playground Login Blade package for [Laravel](https://laravel.com/docs/11.x) applications.
 
 This package provides Authentication Controllers and Blade UI handling:
 - Email Address Verification
@@ -14,7 +14,7 @@ This package provides Authentication Controllers and Blade UI handling:
 - Supports logging out all devices with Sanctum.
 - Provides API Tokens via Sanctum.
 
-More information is available [on the Playground Login Blade wiki.](https://github.com/gammamatrix/playground-login-blade/wiki)
+Read more on using Playground Login Blade [at the Read the Docs for Playground.](https://gammamatrix-playground.readthedocs.io/)
 
 ## Installation
 
@@ -71,7 +71,7 @@ public function removeAbility(mixed $ability): void;
 ```
 
 Abilities may be used with Sanctum. Abilities are included in `Playground\Models\User` with the trait:
-- [playground - src/Models/Traits/Abilities.php](https://github.com/gammamatrix/playground/blob/develop/src/Models/Traits/Abilities.php)
+- [playground - src/Models/Traits/Abilities.php](https://github.com/gammamatrix/playground/blob/develop/src/Models/Concerns/Abilities.php)
 
 
 #### `Playground\Models\Contracts\Admin`

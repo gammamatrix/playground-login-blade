@@ -45,7 +45,7 @@ $rules_laravel = [
     'class_definition' => [
         'multi_line_extends_each_single_line' => true,
         'single_item_single_line' => true,
-        'single_line' => true,
+        'single_line' => false,
     ],
     'clean_namespace' => true,
     'compact_nullable_typehint' => true,
@@ -216,11 +216,12 @@ $finder = PhpCsFixer\Finder::create()
     ->in([
         __DIR__.'/config',
         __DIR__.'/database',
-        // __DIR__ . '/lang',
-        __DIR__.'/routes',
+        // __DIR__.'/lang',
+        // __DIR__.'/routes',
+        __DIR__.'/resources',
         __DIR__.'/src',
         __DIR__.'/tests/Feature',
-        // __DIR__ . '/tests/Unit',
+        // __DIR__.'/tests/Unit',
     ])
     ->name('*.php')
     ->notName('*.blade.php')
