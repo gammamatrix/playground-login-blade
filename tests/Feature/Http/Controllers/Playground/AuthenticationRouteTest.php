@@ -46,14 +46,17 @@ class AuthenticationRouteTest extends TestCase
         $user = User::factory()->create();
 
         // dump([
-        //     '__METHOD__' => __METHOD__,
         //     '$user' => $user->toArray(),
-        //     'config(playground-auth)' => config('playground-auth'),
+        //     'password' => config('auth.testing.password'),
+        //     'hashed' => config('auth.testing.hashed'),
         // ]);
         $response = $this->post('/login', [
             'email' => $user->getAttributeValue('email'),
             'password' => config('auth.testing.password'),
         ]);
+        // $response->dump();
+        // $response->dumpSession();
+        // $response->dumpHeaders();
         $response->assertStatus(302);
 
         $this->assertAuthenticated();

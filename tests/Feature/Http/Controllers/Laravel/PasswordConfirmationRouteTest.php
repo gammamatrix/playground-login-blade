@@ -36,7 +36,11 @@ class PasswordConfirmationRouteTest extends TestCase
          * @var User $user
          */
         $user = User::factory()->create();
-
+        // dump([
+        //     '$user' => $user->toArray(),
+        //     'password' => config('auth.testing.password'),
+        //     'hashed' => config('auth.testing.hashed'),
+        // ]);
         $response = $this->actingAs($user)->post('/confirm-password', [
             'password' => config('auth.testing.password'),
         ]);
