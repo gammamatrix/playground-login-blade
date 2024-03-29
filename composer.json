@@ -11,7 +11,7 @@
         "playground-blade",
         "sanctum"
     ],
-    "homepage": "https://gammamatrix-playground.readthedocs.io/",
+    "homepage": "https://gammamatrix-playground.readthedocs.io/en/develop/components/login.html",
     "license": "MIT",
     "authors": [
         {
