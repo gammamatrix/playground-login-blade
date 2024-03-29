@@ -14,7 +14,7 @@ This package provides Authentication Controllers and Blade UI handling:
 - Supports logging out all devices with Sanctum.
 - Provides API Tokens via Sanctum.
 
-Read more on using Playground Login Blade [at the Read the Docs for Playground.](https://gammamatrix-playground.readthedocs.io/)
+Read more on using [Playground Login Blade at Read the Docs: Playground Documentation.](https://gammamatrix-playground.readthedocs.io/en/develop/components/login.html)
 
 ## Installation
 
