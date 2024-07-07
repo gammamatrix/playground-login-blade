@@ -8,7 +8,7 @@ namespace Tests\Feature\Playground\Login\Blade\Http\Controllers\Playground;
 
 use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Support\Facades\Notification;
-use Playground\Test\Models\AppPlaygroundUser as User;
+use Playground\Models\User;
 use Tests\Feature\Playground\Login\Blade\TestCase;
 
 /**
@@ -16,9 +16,9 @@ use Tests\Feature\Playground\Login\Blade\TestCase;
  */
 class PasswordResetRouteTest extends TestCase
 {
-    use TestTrait;
-
     protected bool $load_migrations_playground = true;
+
+    protected bool $setUpUserForPlayground = true;
 
     public function test_reset_password_link_screen_can_be_rendered(): void
     {

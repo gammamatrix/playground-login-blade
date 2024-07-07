@@ -12,7 +12,7 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\URL;
-use Playground\Test\Models\User;
+use Playground\Test\Models\DefaultUser as User;
 use Tests\Feature\Playground\Login\Blade\TestCase;
 
 /**
@@ -20,9 +20,9 @@ use Tests\Feature\Playground\Login\Blade\TestCase;
  */
 class EmailVerificationRouteTest extends TestCase
 {
-    use TestTrait;
-
     protected bool $load_migrations_laravel = true;
+
+    protected bool $setUpUserForLaravel = true;
 
     public function test_email_verification_screen_can_be_rendered(): void
     {

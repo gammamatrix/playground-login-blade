@@ -1,18 +1,13 @@
 <?php
-
-declare(strict_types=1);
 /**
  * Playground
  */
+
+declare(strict_types=1);
 namespace Tests\Feature\Playground\Login\Blade;
 
 use Illuminate\Foundation\Testing\Concerns\InteractsWithViews;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-// use Playground\Auth\ServiceProvider as PlaygroundAuthServiceProvider;
-// use Playground\Blade\ServiceProvider as PlaygroundBladeServiceProvider;
-// use Playground\Login\Blade\ServiceProvider;
-// use Playground\ServiceProvider as PlaygroundServiceProvider;
-use Illuminate\Support\Carbon;
 use Playground\Test\OrchestraTestCase;
 
 /**
@@ -22,63 +17,21 @@ class TestCase extends OrchestraTestCase
 {
     use DatabaseTransactions;
     use InteractsWithViews;
-    use TestTrait;
+    use PackageProviders;
 
-    protected bool $load_migrations_laravel = false;
+    protected bool $setUpUserForAdmin = false;
 
-    protected bool $load_migrations_playground = false;
+    protected bool $setUpUserForLaravel = false;
 
-    // protected function getPackageProviders($app)
-    // {
-    //     return [
-    //         PlaygroundAuthServiceProvider::class,
-    //         PlaygroundServiceProvider::class,
-    //         PlaygroundBladeServiceProvider::class,
-    //         ServiceProvider::class,
-    //     ];
-    // }
+    protected bool $setUpUserForLaravelSanctum = false;
 
-    /**
-     * Setup the test environment.
-     */
-    protected function setUp(): void
-    {
-        parent::setUp();
+    protected bool $setUpUserForPlayground = false;
 
-        Carbon::setTestNow(Carbon::now());
+    protected bool $setUpUserForPlaygroundSanctum = false;
 
-        if (! empty(env('TEST_DB_MIGRATIONS'))) {
-            if ($this->load_migrations_laravel) {
-                $this->loadMigrationsFrom(dirname(dirname(__DIR__)).'/database/migrations-laravel');
-            }
-            if ($this->load_migrations_playground) {
-                $this->loadMigrationsFrom(dirname(dirname(__DIR__)).'/database/migrations-playground');
-            }
-        }
-    }
+    protected bool $setUpUserForPolicy = false;
 
-    /**
-     * Set up the environment.
-     *
-     * @param  \Illuminate\Foundation\Application  $app
-     */
-    protected function getEnvironmentSetUp($app)
-    {
-        $app['config']->set('app.debug', false);
+    protected bool $setUpUserForPrivileges = false;
 
-        $app['config']->set('auth.providers.users.model', '\\Playground\\Test\\Models\\User');
-        $app['config']->set('auth.testing.password', 'password');
-        $app['config']->set('auth.testing.hashed', false);
-
-        $app['config']->set('playground-auth.debug', false);
-        $app['config']->set('playground-auth.sanctum', false);
-        $app['config']->set('playground-auth.verify', 'user');
-
-        $app['config']->set('playground-auth.hasPrivilege', false);
-        $app['config']->set('playground-auth.userPrivileges', false);
-
-        $app['config']->set('playground-auth.hasRole', false);
-        $app['config']->set('playground-auth.userRole', false);
-        $app['config']->set('playground-auth.userRoles', false);
-    }
+    protected bool $setUpUserForRoles = false;
 }

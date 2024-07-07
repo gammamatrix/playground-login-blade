@@ -166,7 +166,58 @@ If `PLAYGROUND_LOGIN_BLADE_LAYOUT` is not set, it defaults to `PLAYGROUND_BLADE_
 | `PLAYGROUND_LOGIN_BLADE_LAYOUT` | `playground-login-blade.layout` |
 | `PLAYGROUND_LOGIN_BLADE_VIEW`   | `playground-login-blade.view`   |
 
-## Testing
+
+## Cloc
+
+```sh
+composer cloc
+```
+
+```
+➜  playground-login-blade git:(develop) ✗ composer cloc
+> cloc --exclude-dir=output,vendor .
+      76 text files.
+      53 unique files.
+      25 files ignored.
+
+github.com/AlDanial/cloc v 1.98  T=0.08 s (698.4 files/s, 61178.1 lines/s)
+-------------------------------------------------------------------------------
+Language                     files          blank        comment           code
+-------------------------------------------------------------------------------
+PHP                             38            559            749           2005
+Blade                            7             66              0            544
+YAML                             1              5              0            275
+XML                              2              0              2            144
+Markdown                         3             72              0            140
+JSON                             1              0              0             67
+INI                              1              3              0             12
+-------------------------------------------------------------------------------
+SUM:                            53            705            751           3187
+-------------------------------------------------------------------------------
+```
+
+## PHPStan
+
+Tests at level 9 on:
+- `config/`
+- `database/`
+- `resources/`
+- `src/`
+- `tests/Feature/`
+- `tests/Unit/`
+
+```sh
+composer analyse
+```
+
+## Coding Standards
+
+```sh
+composer format
+```
+
+
+## Tests
 
 ```sh
 composer test

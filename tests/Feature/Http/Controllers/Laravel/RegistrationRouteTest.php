@@ -13,9 +13,9 @@ use Tests\Feature\Playground\Login\Blade\TestCase;
  */
 class RegistrationRouteTest extends TestCase
 {
-    use TestTrait;
-
     protected bool $load_migrations_laravel = true;
+
+    protected bool $setUpUserForLaravel = true;
 
     public function test_registration_screen_can_be_rendered(): void
     {

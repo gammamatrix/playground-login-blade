@@ -6,7 +6,7 @@ declare(strict_types=1);
  */
 namespace Tests\Feature\Playground\Login\Blade\Http\Controllers\Laravel;
 
-use Playground\Test\Models\User;
+use Playground\Test\Models\DefaultUser as User;
 use Tests\Feature\Playground\Login\Blade\TestCase;
 
 /**
@@ -14,9 +14,9 @@ use Tests\Feature\Playground\Login\Blade\TestCase;
  */
 class PasswordConfirmationRouteTest extends TestCase
 {
-    use TestTrait;
-
     protected bool $load_migrations_laravel = true;
+
+    protected bool $setUpUserForLaravel = true;
 
     public function test_confirm_password_screen_can_be_rendered(): void
     {

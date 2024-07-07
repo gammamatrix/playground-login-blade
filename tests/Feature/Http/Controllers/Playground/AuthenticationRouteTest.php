@@ -6,7 +6,7 @@ declare(strict_types=1);
  */
 namespace Tests\Feature\Playground\Login\Blade\Http\Controllers\Playground;
 
-use Playground\Test\Models\AppPlaygroundUser as User;
+use Playground\Models\User;
 use Tests\Feature\Playground\Login\Blade\TestCase;
 
 /**
@@ -14,22 +14,9 @@ use Tests\Feature\Playground\Login\Blade\TestCase;
  */
 class AuthenticationRouteTest extends TestCase
 {
-    use TestTrait;
-
     protected bool $load_migrations_playground = true;
 
-    // /**
-    //  * Set up the environment.
-    //  *
-    //  * @param  \Illuminate\Foundation\Application  $app
-    //  */
-    // protected function getEnvironmentSetUp($app)
-    // {
-    //     $app['config']->set('auth.providers.users.model', User::class);
-    //     $app['config']->set('auth.testing.password', 'password');
-    //     $app['config']->set('auth.testing.hashed', false);
-    //     $app['config']->set('playground-auth.token.sanctum', false);
-    // }
+    protected bool $setUpUserForPlayground = true;
 
     public function test_login_screen_can_be_rendered(): void
     {

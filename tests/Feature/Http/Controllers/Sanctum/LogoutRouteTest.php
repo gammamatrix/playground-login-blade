@@ -6,7 +6,7 @@ declare(strict_types=1);
  */
 namespace Tests\Feature\Playground\Login\Blade\Http\Controllers\Sanctum;
 
-use Playground\Test\Models\UserWithSanctum;
+use Playground\Models\User as UserWithSanctum;
 use Tests\Feature\Playground\Login\Blade\TestCase;
 
 /**
@@ -14,22 +14,9 @@ use Tests\Feature\Playground\Login\Blade\TestCase;
  */
 class LogoutRouteTest extends TestCase
 {
-    use TestTrait;
+    protected bool $load_migrations_playground = true;
 
-    protected bool $load_migrations_laravel = true;
-
-    // /**
-    //  * Set up the environment.
-    //  *
-    //  * @param  \Illuminate\Foundation\Application  $app
-    //  */
-    // protected function getEnvironmentSetUp($app)
-    // {
-    //     $app['config']->set('auth.providers.users.model', UserWithSanctum::class);
-    //     $app['config']->set('auth.testing.password', 'password');
-    //     $app['config']->set('auth.testing.hashed', false);
-    //     $app['config']->set('playground-auth.token.sanctum', true);
-    // }
+    protected bool $setUpUserForPlaygroundSanctum = true;
 
     public function test_sanctum_users_can_authenticate_and_logout_and_delete_token(): void
     {
