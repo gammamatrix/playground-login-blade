@@ -19,6 +19,8 @@ class TestCase extends OrchestraTestCase
     use InteractsWithViews;
     use PackageProviders;
 
+    protected bool $hasMigrations = true;
+
     protected bool $setUpUserForAdmin = false;
 
     protected bool $setUpUserForLaravel = false;
