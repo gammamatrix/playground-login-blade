@@ -4,15 +4,18 @@ declare(strict_types=1);
 /**
  * Playground
  */
+
 namespace Playground\Login\Blade\Http\Controllers;
 
 use Illuminate\Contracts\Auth\Authenticatable;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\View\View;
+use Laravel\Sanctum\Contracts\HasApiTokens;
 use Laravel\Sanctum\PersonalAccessToken;
 use Playground\Auth\Issuer;
 use Playground\Login\Blade\Http\Requests\LoginRequest;
@@ -147,7 +150,7 @@ class AuthenticatedSessionController extends Controller
             && ! empty($config['token']['sanctum'])
         ) {
             /**
-             * @var Authenticatable $user
+             * @var Authenticatable&Model $user
              */
             $user = $request->user();
 
@@ -179,7 +182,8 @@ class AuthenticatedSessionController extends Controller
     }
 
     /**
-     * @param array<string, mixed> $config
+     * @param  Authenticatable&Model  $user
+     * @param  array<int|string, mixed>  $config
      */
     protected function destroyTokens(
         Authenticatable $user,
@@ -190,7 +194,7 @@ class AuthenticatedSessionController extends Controller
         $useSession = ! empty(config('playground-login-blade.session'));
 
         if ($all) {
-            if (is_callable([$user, 'tokens'])) {
+            if (is_callable([$user, 'tokens']) && $user instanceof HasApiTokens) {
                 $user->tokens()->delete();
             }
         } else {
@@ -222,7 +226,7 @@ class AuthenticatedSessionController extends Controller
                 }
             }
 
-            if ($token) {
+            if ($token instanceof PersonalAccessToken) {
                 $token->delete();
             }
         }

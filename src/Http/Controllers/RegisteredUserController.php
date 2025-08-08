@@ -4,6 +4,7 @@ declare(strict_types=1);
 /**
  * Playground
  */
+
 namespace Playground\Login\Blade\Http\Controllers;
 
 use Illuminate\Auth\Events\Registered;
@@ -27,12 +28,14 @@ class RegisteredUserController extends Controller
      */
     public function create(): View
     {
-        $package_config_login_blade = config('playground-login-blade');
+        $package_config_login_blade = is_array(config('playground-login-blade')) ? config('playground-login-blade') : [];
 
-        return view($this->getPackageViewPathFromConfig(
+        $view = $this->getPackageViewPathFromConfig(
             $package_config_login_blade,
             'register'
-        ), [
+        );
+
+        return view($view, [
             'package_config_login_blade' => $package_config_login_blade,
         ]);
     }

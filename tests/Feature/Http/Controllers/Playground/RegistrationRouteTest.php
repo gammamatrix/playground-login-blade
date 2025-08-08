@@ -4,6 +4,7 @@ declare(strict_types=1);
 /**
  * Playground
  */
+
 namespace Tests\Feature\Playground\Login\Blade\Http\Controllers\Playground;
 
 use Tests\Feature\Playground\Login\Blade\TestCase;
@@ -29,8 +30,8 @@ class RegistrationRouteTest extends TestCase
         $response = $this->post('/register', [
             'name' => 'Test User',
             'email' => $this->faker()->email,
-            'password' => config('auth.testing.password'),
-            'password_confirmation' => config('auth.testing.password'),
+            'password' => config('playground-test.password'),
+            'password_confirmation' => config('playground-test.password'),
         ]);
 
         $this->assertAuthenticated();

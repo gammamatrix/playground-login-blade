@@ -4,9 +4,12 @@ declare(strict_types=1);
 /**
  * Playground
  */
+
 namespace Playground\Login\Blade\Http\Controllers;
 
 use Illuminate\Auth\Events\PasswordReset;
+use Illuminate\Contracts\Auth\Authenticatable;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -63,13 +66,16 @@ class NewPasswordController extends Controller
 
         // Here we will attempt to reset the user's password. If it is successful we
         // will update the password on an actual user model and persist it to the
-        // database. Otherwise we will parse the error and return the response.
+        // database. Otherwise, we will parse the error and return the response.
         /**
          * @var string $status
          */
         $status = Password::reset(
             $request->only('email', 'password', 'password_confirmation', 'token'),
-            function ($user) use ($password) {
+            /**
+             * @param  Authenticatable&Model  $user
+             */
+            function (Authenticatable $user) use ($password) {
                 $user->forceFill([
                     'password' => Hash::make($password),
                     'remember_token' => Str::random(60),

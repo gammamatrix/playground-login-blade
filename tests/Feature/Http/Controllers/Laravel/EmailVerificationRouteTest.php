@@ -4,6 +4,7 @@ declare(strict_types=1);
 /**
  * Playground
  */
+
 namespace Tests\Feature\Playground\Login\Blade\Http\Controllers\Laravel;
 
 use Illuminate\Auth\Events\Verified;
@@ -224,11 +225,16 @@ class EmailVerificationRouteTest extends TestCase
          */
         $email = $user->getAttributeValue('email');
 
+        /**
+         * @var string $id
+         */
+        $id = $user->getAttributeValue('id');
+
         $verificationUrl = URL::temporarySignedRoute(
             'verification.verify',
             Carbon::now()->addMinutes($expire),
             [
-                'id' => $user->getAttributeValue('id').'make-this-invalid',
+                'id' => sprintf('%1$s-some-invalid-text', $id),
                 'hash' => sha1($email),
             ]
         );

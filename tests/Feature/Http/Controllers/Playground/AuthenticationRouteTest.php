@@ -4,6 +4,7 @@ declare(strict_types=1);
 /**
  * Playground
  */
+
 namespace Tests\Feature\Playground\Login\Blade\Http\Controllers\Playground;
 
 use Playground\Models\User;
@@ -32,14 +33,15 @@ class AuthenticationRouteTest extends TestCase
          */
         $user = User::factory()->create();
 
-        // dump([
-        //     '$user' => $user->toArray(),
-        //     'password' => config('auth.testing.password'),
-        //     'hashed' => config('auth.testing.hashed'),
-        // ]);
+        //         dd([
+        //             '$user' => $user->toArray(),
+        //             'password' => config('playground-test.password'),
+        //             'hashed' => config('playground-test.password_encrypted'),
+        //             'playground-test' => config('playground-test'),
+        //         ]);
         $response = $this->post('/login', [
             'email' => $user->getAttributeValue('email'),
-            'password' => config('auth.testing.password'),
+            'password' => config('playground-test.password'),
         ]);
         // $response->dump();
         // $response->dumpSession();
@@ -59,7 +61,7 @@ class AuthenticationRouteTest extends TestCase
 
         $response = $this->json('post', '/login', [
             'email' => $user->getAttributeValue('email'),
-            'password' => config('auth.testing.password'),
+            'password' => config('playground-test.password'),
         ]);
         $response->assertStatus(200);
 
@@ -190,7 +192,7 @@ class AuthenticationRouteTest extends TestCase
 
         $response = $this->post('/login', [
             'email' => $user->getAttributeValue('email'),
-            'password' => config('auth.testing.password'),
+            'password' => config('playground-test.password'),
         ]);
 
         $response->assertStatus(302);

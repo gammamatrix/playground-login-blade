@@ -4,10 +4,12 @@ declare(strict_types=1);
 /**
  * Playground
  */
+
 namespace Playground\Login\Blade;
 
 use Illuminate\Foundation\Console\AboutCommand;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Str;
 
 /**
@@ -17,7 +19,7 @@ class ServiceProvider extends AuthServiceProvider
 {
     protected string $package = 'playground-login-blade';
 
-    public const VERSION = '73.0.0';
+    public const string VERSION = '73.0.0';
 
     public function boot(): void
     {
@@ -39,7 +41,7 @@ class ServiceProvider extends AuthServiceProvider
                 );
             }
 
-            if ($this->app->runningInConsole()) {
+            if (App::runningInConsole()) {
                 // Publish configuration
                 $this->publishes([
                     sprintf('%1$s/config/%2$s.php', dirname(__DIR__), $this->package) => config_path(sprintf('%1$s.php', $this->package)),
@@ -70,6 +72,10 @@ class ServiceProvider extends AuthServiceProvider
 
         $version = $this->version();
 
+        $layout = ! empty($config['layout']) && is_string($config['layout']) ? $config['layout'] : '';
+        $view = ! empty($config['view']) && is_string($config['view']) ? $config['view'] : '';
+        $sitemap_view = ! empty($sitemap['view']) && is_string($sitemap['view']) ? $sitemap['view'] : '';
+
         AboutCommand::add('Playground: Login Blade', fn () => [
             '<fg=yellow;options=bold>Load</> Routes' => ! empty($load['routes']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',
             '<fg=yellow;options=bold>Load</> Views' => ! empty($load['views']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',
@@ -78,13 +84,13 @@ class ServiceProvider extends AuthServiceProvider
             '<fg=yellow;options=bold>Middleware</> default' => sprintf('%s', json_encode($middleware['default'])),
             '<fg=yellow;options=bold>Middleware</> guest' => sprintf('%s', json_encode($middleware['guest'])),
 
-            '<fg=blue;options=bold>View</> [layout]' => sprintf('[%s]', $config['layout']),
-            '<fg=blue;options=bold>View</> [prefix]' => sprintf('[%s]', $config['view']),
+            '<fg=blue;options=bold>View</> [layout]' => sprintf('[%s]', $layout),
+            '<fg=blue;options=bold>View</> [prefix]' => sprintf('[%s]', $view),
 
             '<fg=magenta;options=bold>Sitemap</> Views' => ! empty($sitemap['enable']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',
             '<fg=magenta;options=bold>Sitemap</> Guest' => ! empty($sitemap['guest']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',
             '<fg=magenta;options=bold>Sitemap</> User' => ! empty($sitemap['user']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',
-            '<fg=magenta;options=bold>Sitemap</> [view]' => sprintf('[%s]', $sitemap['view']),
+            '<fg=magenta;options=bold>Sitemap</> [view]' => sprintf('[%s]', $sitemap_view),
 
             '<fg=red;options=bold>Route</> confirm' => ! empty($routes['confirm']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',
             '<fg=red;options=bold>Route</> forgot' => ! empty($routes['forgot']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',
@@ -109,7 +115,7 @@ class ServiceProvider extends AuthServiceProvider
     }
 
     /**
-     * @param array<string, bool> $routes
+     * @param  array<int|string, mixed>  $routes
      */
     public function routes(array $routes): void
     {

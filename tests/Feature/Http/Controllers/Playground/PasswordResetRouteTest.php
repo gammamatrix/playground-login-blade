@@ -4,6 +4,7 @@ declare(strict_types=1);
 /**
  * Playground
  */
+
 namespace Tests\Feature\Playground\Login\Blade\Http\Controllers\Playground;
 
 use Illuminate\Auth\Notifications\ResetPassword;
@@ -53,7 +54,7 @@ class PasswordResetRouteTest extends TestCase
         $response = $this->post('/forgot-password', ['email' => $user->getAttributeValue('email')]);
         // $response->dump();
         $response->assertRedirect();
-        Notification::assertSentTo($user, ResetPassword::class, function ($notification) {
+        Notification::assertSentTo($user, ResetPassword::class, function (ResetPassword $notification) {
             $response = $this->get('/reset-password/'.$notification->token);
 
             // $response->dump();
@@ -75,12 +76,12 @@ class PasswordResetRouteTest extends TestCase
         $response = $this->post('/forgot-password', ['email' => $user->getAttributeValue('email')]);
         $response->assertRedirect();
 
-        Notification::assertSentTo($user, ResetPassword::class, function ($notification) use ($user) {
+        Notification::assertSentTo($user, ResetPassword::class, function (ResetPassword $notification) use ($user) {
             $response = $this->post('/reset-password', [
                 'token' => $notification->token,
                 'email' => $user->getAttributeValue('email'),
-                'password' => config('auth.testing.password'),
-                'password_confirmation' => config('auth.testing.password'),
+                'password' => config('playground-test.password'),
+                'password_confirmation' => config('playground-test.password'),
             ]);
 
             $response->assertSessionHasNoErrors();
@@ -104,8 +105,8 @@ class PasswordResetRouteTest extends TestCase
             $response = $this->post('/reset-password', [
                 'token' => 'not the valid token',
                 'email' => $user->getAttributeValue('email'),
-                'password' => config('auth.testing.password'),
-                'password_confirmation' => config('auth.testing.password'),
+                'password' => config('playground-test.password'),
+                'password_confirmation' => config('playground-test.password'),
             ]);
 
             $response->assertSessionHasErrors();
@@ -129,8 +130,8 @@ class PasswordResetRouteTest extends TestCase
             $response = $this->post('/reset-password', [
                 'token' => 'not the valid token',
                 'email' => $user->getAttributeValue('email'),
-                'password' => config('auth.testing.password'),
-                'password_confirmation' => config('auth.testing.password'),
+                'password' => config('playground-test.password'),
+                'password_confirmation' => config('playground-test.password'),
             ]);
 
             $response->assertSessionHasErrors();

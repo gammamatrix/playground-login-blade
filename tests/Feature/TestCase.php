@@ -1,9 +1,11 @@
 <?php
+
 /**
  * Playground
  */
 
 declare(strict_types=1);
+
 namespace Tests\Feature\Playground\Login\Blade;
 
 use Illuminate\Foundation\Testing\Concerns\InteractsWithViews;

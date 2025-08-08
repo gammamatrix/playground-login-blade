@@ -4,6 +4,7 @@ declare(strict_types=1);
 /**
  * Playground
  */
+
 namespace Tests\Feature\Playground\Login\Blade\Http\Controllers\Laravel;
 
 use Playground\Test\Models\DefaultUser as User;
@@ -38,11 +39,11 @@ class PasswordConfirmationRouteTest extends TestCase
         $user = User::factory()->create();
         // dump([
         //     '$user' => $user->toArray(),
-        //     'password' => config('auth.testing.password'),
+        //     'password' => config('playground-test.password'),
         //     'hashed' => config('auth.testing.hashed'),
         // ]);
         $response = $this->actingAs($user)->post('/confirm-password', [
-            'password' => config('auth.testing.password'),
+            'password' => config('playground-test.password'),
         ]);
 
         $response->assertRedirect();

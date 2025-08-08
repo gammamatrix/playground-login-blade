@@ -4,6 +4,7 @@ declare(strict_types=1);
 /**
  * Playground
  */
+
 namespace Tests\Feature\Playground\Login\Blade\Http\Controllers\Sanctum;
 
 use Playground\Models\User as UserWithSanctum;
@@ -27,7 +28,7 @@ class LogoutRouteTest extends TestCase
 
         $response = $this->post('/login', [
             'email' => $user->getAttributeValue('email'),
-            'password' => config('auth.testing.password'),
+            'password' => config('playground-test.password'),
         ]);
 
         // $response->dump();
@@ -122,7 +123,7 @@ class LogoutRouteTest extends TestCase
 
         $response = $this->post('/login', [
             'email' => $user->getAttributeValue('email'),
-            'password' => config('auth.testing.password'),
+            'password' => config('playground-test.password'),
         ]);
 
         // $response->dump();

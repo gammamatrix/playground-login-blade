@@ -4,6 +4,7 @@ declare(strict_types=1);
 /**
  * Playground
  */
+
 namespace Tests\Feature\Playground\Login\Blade\Http\Controllers\Playground;
 
 use Playground\Models\User;
@@ -38,7 +39,7 @@ class PasswordConfirmationRouteTest extends TestCase
         $user = User::factory()->create();
 
         $response = $this->actingAs($user)->post('/confirm-password', [
-            'password' => config('auth.testing.password'),
+            'password' => config('playground-test.password'),
         ]);
 
         $response->assertRedirect();

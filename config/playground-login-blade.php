@@ -2,6 +2,9 @@
 
 declare(strict_types=1);
 
+/**
+ * @return array<string, mixed>
+ */
 return [
     'layout' => env('PLAYGROUND_LOGIN_BLADE_LAYOUT', env('PLAYGROUND_BLADE_LAYOUT', 'playground::layouts.site')),
     'load' => [

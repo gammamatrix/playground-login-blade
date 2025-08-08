@@ -4,6 +4,7 @@ declare(strict_types=1);
 /**
  * Playground
  */
+
 namespace Playground\Login\Blade\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
