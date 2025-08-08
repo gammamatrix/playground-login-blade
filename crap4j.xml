@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <crap_result>
   <project/>
-  <timestamp>2024-07-09 02:11:41</timestamp>
+  <timestamp>2025-08-08 16:34:55</timestamp>
   <stats>
     <name>Method Crap Stats</name>
     <methodCount>36</methodCount>
     <crapMethodCount>0</crapMethodCount>
     <crapLoad>0</crapLoad>
-    <totalCrap>142</totalCrap>
+    <totalCrap>150</totalCrap>
     <crapMethodPercent>0</crapMethodPercent>
   </stats>
   <methods>
@@ -50,8 +50,8 @@
       <methodName>destroyTokens</methodName>
       <methodSignature>destroyTokens(Illuminate\Contracts\Auth\Authenticatable $user, Illuminate\Http\Request $request, array $config): void</methodSignature>
       <fullMethod>destroyTokens(Illuminate\Contracts\Auth\Authenticatable $user, Illuminate\Http\Request $request, array $config): void</fullMethod>
-      <crap>17</crap>
-      <complexity>17</complexity>
+      <crap>18</crap>
+      <complexity>18</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -193,8 +193,8 @@
       <methodName>create</methodName>
       <methodSignature>create(): Illuminate\View\View</methodSignature>
       <fullMethod>create(): Illuminate\View\View</fullMethod>
-      <crap>1</crap>
-      <complexity>1</complexity>
+      <crap>2</crap>
+      <complexity>2</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -369,8 +369,8 @@
       <methodName>about</methodName>
       <methodSignature>about(): void</methodSignature>
       <fullMethod>about(): void</fullMethod>
-      <crap>23</crap>
-      <complexity>23</complexity>
+      <crap>29</crap>
+      <complexity>29</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
