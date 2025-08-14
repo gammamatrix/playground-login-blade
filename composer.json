@@ -23,10 +23,13 @@
     "require": {
         "php": "^8.4",
         "gammamatrix/playground-auth": "dev-develop|dev-master|dev-feature/*|^74.0@dev|^74.0",
-        "gammamatrix/playground-blade": "dev-develop|dev-master|dev-feature/*|^74.0@dev|^74.0"
+        "gammamatrix/playground-blade": "dev-develop|dev-master|dev-feature/*|^74.0@dev|^74.0",
+        "illuminate/view": "^12.0"
     },
     "require-dev": {
-        "gammamatrix/playground-test": "dev-develop|dev-master|dev-feature/*|^74.0@dev|^74.0"
+        "gammamatrix/playground-test": "dev-develop|dev-master|dev-feature/*|^74.0@dev|^74.0",
+        "illuminate/testing": "^12.0",
+        "phpunit/phpunit": "^12.3"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,

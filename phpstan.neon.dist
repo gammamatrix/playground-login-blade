@@ -9,10 +9,10 @@ parameters:
 
     paths:
         - config
+        - resources/views
         - routes
         - src
         - tests
-        # - resources/views
 
     excludePaths:
         - 'tests/logs/*'
