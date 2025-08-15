@@ -26,7 +26,7 @@ composer require gammamatrix/playground-login-blade
 
 ## `artisan about`
 
-Playground Login Blade provides configurationinformation in the `artisan about` command.
+Playground Login Blade provides configuration information in the `artisan about` command.
 
 <img src="resources/docs/artisan-about-playground-login-blade.png" alt="screenshot of artisan about command with Playground Login Blade.">
 
