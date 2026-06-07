@@ -8,10 +8,12 @@ declare(strict_types=1);
 namespace Playground\Login\Blade\Http\Controllers;
 
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Contracts\Auth\Authenticatable;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\RedirectResponse;
+// use Illuminate\Validation\Rules;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-// use Illuminate\Validation\Rules;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\View\View;
 use Playground\Login\Blade\Http\Requests\RegisterUserRequest;
@@ -53,12 +55,12 @@ class RegisteredUserController extends Controller
         $validated = $request->validated();
 
         /**
-         * @var class-string<\Illuminate\Database\Eloquent\Model> $u
+         * @var class-string<Model> $u
          */
         $u = config('auth.providers.users.model', '\\App\\Models\\User');
 
         /**
-         * @var \Illuminate\Contracts\Auth\Authenticatable $user
+         * @var Authenticatable $user
          */
         $user = $u::create([
             'name' => $validated['name'],

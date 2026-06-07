@@ -2,7 +2,7 @@
 
 [![Playground CI Workflow](https://github.com/gammamatrix/playground-login-blade/actions/workflows/ci.yml/badge.svg?branch=develop)](https://raw.githubusercontent.com/gammamatrix/playground-login-blade/testing/develop/testdox.txt)
 [![Test Coverage](https://raw.githubusercontent.com/gammamatrix/playground-login-blade/testing/develop/coverage.svg)](tests)
-[![PHPStan Level 10 src and tests](https://img.shields.io/badge/PHPStan-level%2010-brightgreen)](.github/workflows/ci.yml#L128)
+[![PHPStan Level 11 src and tests](https://img.shields.io/badge/PHPStan-level%2011-brightgreen)](.github/workflows/ci.yml#L128)
 
 The Playground Login Blade package for [Laravel](https://laravel.com/docs/11.x) applications.
 

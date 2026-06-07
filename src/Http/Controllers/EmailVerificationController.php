@@ -8,6 +8,8 @@ declare(strict_types=1);
 namespace Playground\Login\Blade\Http\Controllers;
 
 use Illuminate\Auth\Events\Verified;
+use Illuminate\Contracts\Auth\Authenticatable;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -28,7 +30,7 @@ class EmailVerificationController extends Controller
     public function show(Request $request): Response|JsonResponse|RedirectResponse|View
     {
         /**
-         * @var \Illuminate\Contracts\Auth\Authenticatable&\Illuminate\Contracts\Auth\MustVerifyEmail
+         * @var Authenticatable&MustVerifyEmail
          */
         $user = $request->user();
 
@@ -54,7 +56,7 @@ class EmailVerificationController extends Controller
     public function send(Request $request): RedirectResponse|Response
     {
         /**
-         * @var \Illuminate\Contracts\Auth\Authenticatable&\Illuminate\Contracts\Auth\MustVerifyEmail
+         * @var Authenticatable&MustVerifyEmail
          */
         $user = $request->user();
 
@@ -76,7 +78,7 @@ class EmailVerificationController extends Controller
         EmailVerificationRequest $request
     ): Response|JsonResponse|RedirectResponse|View {
         /**
-         * @var \Illuminate\Contracts\Auth\Authenticatable&\Illuminate\Contracts\Auth\MustVerifyEmail
+         * @var Authenticatable&MustVerifyEmail
          */
         $user = $request->user();
 

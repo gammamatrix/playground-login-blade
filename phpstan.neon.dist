@@ -1,11 +1,11 @@
 includes:
-    # - vendor/tomasvotruba/bladestan/config/extension.neon
+    - vendor/tomasvotruba/bladestan/config/extension.neon
     - vendor/larastan/larastan/extension.neon
     - vendor/phpstan/phpstan-phpunit/extension.neon
     - vendor/phpstan/phpstan-phpunit/rules.neon
 
 parameters:
-    level: 10
+    level: max
 
     paths:
         - config
